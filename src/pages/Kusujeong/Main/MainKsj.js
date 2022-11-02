@@ -1,6 +1,6 @@
 import React from 'react';
-import './Main_ksj.scss';
+import './MainKsj.scss';
 
-export default function Main_ksj() {
+export default function MainKsj() {
   return <h1>Hello World_ksj</h1>;
 }

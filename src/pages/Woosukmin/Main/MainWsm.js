@@ -1,6 +1,6 @@
 import React from 'react';
-import './Main_wsm.scss';
+import './MainWsm.scss';
 
-export default function Main_wsm() {
+export default function MainWsm() {
   return <h1>Hello World_wsm</h1>;
 }

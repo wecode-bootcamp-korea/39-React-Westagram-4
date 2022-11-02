@@ -1,5 +1,5 @@
 import React from 'react';
-import './Main_asj.scss';
-export default function Main_asj() {
+import './MainAsj.scss';
+export default function MainAsj() {
   return <h1>Hello World_asj</h1>;
 }

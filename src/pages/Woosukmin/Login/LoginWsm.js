@@ -1,7 +1,7 @@
 import React from 'react';
-import './Login_wsm.scss';
+import './LoginWsm.scss';
 
-export default function Login_wsm() {
+export default function LoginWsm() {
   return (
     <div>
       <h1>Hello</h1>

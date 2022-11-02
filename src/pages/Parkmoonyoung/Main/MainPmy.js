@@ -1,6 +1,6 @@
 import React from 'react';
-import './Main_pmy.scss';
+import './MainPmy.scss';
 
-export default function Main_pmy() {
+export default function MainPmy() {
   return <h1>Hello World_pmy</h1>;
 }
