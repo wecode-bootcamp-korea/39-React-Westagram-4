@@ -3,14 +3,14 @@ import './LoginWsm.scss';
 
 export default function LoginWsm() {
   return (
-    <div>
+    <div className="login-wrap">
       <header>
         <div className="main">
           <div className="logo">
             <h1>Westagram</h1>
           </div>
           <div className="loginbar">
-            <form>
+            <form className="formbox">
               <input
                 className="login-1"
                 type="text"

@@ -114,6 +114,7 @@
 }
 .section {
   display: flex;
+  position: static;
   flex-flow: row nowrap;
 
   width: 820px;
