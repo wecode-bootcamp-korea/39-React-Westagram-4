@@ -1,4 +1,3 @@
-// 팀원 중 윈도우 유저가 있을 경우
 {
   "extends": ["react-app", "plugin:prettier/recommended"],
   "rules": {

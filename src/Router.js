@@ -1,15 +1,18 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main_asj from "./pages/Ahnsangjun/Main/Main";
-import Main_khj from "./pages/Kimhojoon/Main/Main";
-import Main_ksj from "./pages/Kusujeong/Main/Main";
-import Main_pmy from "./pages/Parkmoonyoung/Main/Main";
-import Main_wsm from "./pages/Woosukmin/Main/Main";
-import Login_asj from "./pages/Ahnsangjun/Login/Login";
-import Login_khj from "./pages/Kimhojoon/Login/Login";
-import Login_ksj from "./pages/Kusujeong/Login/Login";
-import Login_pmy from "./pages/Parkmoonyoung/Login/Login";
-import Login_wsm from "./pages/Woosukmin/Login/Login";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main_asj from './pages/Ahnsangjun/Main/Main_asj';
+import Main_khj from './pages/Kimhojoon/Main/Main_khj';
+import Main_ksj from './pages/Kusujeong/Main/Main_ksj';
+import Main_pmy from './pages/Parkmoonyoung/Main/Main_pmy';
+import Main_wsm from './pages/Woosukmin/Main/Main_wsm';
+import Login_asj from './pages/Ahnsangjun/Login/Login_asj';
+import Login_khj from './pages/Kimhojoon/Login/Login_khj';
+import Login_ksj from './pages/Kusujeong/Login/Login_ksj';
+import Login_pmy from './pages/Parkmoonyoung/Login/Login_pmy';
+import Login_wsm from './pages/Woosukmin/Login/Login_wsm';
+
+import './styles/reset.scss';
+import './styles/commons.scss';
 
 function Router() {
   return (
