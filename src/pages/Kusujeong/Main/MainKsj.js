@@ -290,25 +290,25 @@ export default function MainKsj() {
               </div>
             </div>
           </div>
+          <footer className="footer">
+            <ul className="recommand-footer">
+              <li className="footer-list">소개</li>
+              <li className="footer-list">도움말</li>
+              <li className="footer-list">홍보센터</li>
+              <li className="footer-list">API</li>
+              <li className="footer-list">채용정보</li>
+              <li className="footer-list">개인정보처리방침</li>
+              <br />
+              <li className="footer-list">약관</li>
+              <li className="footer-list">위치</li>
+              <li className="footer-list">언어</li>
+            </ul>
+            <span className="copyright footer">
+              <i className="fa-regular fa-copyright" />
+              2022 westagram from sujeong
+            </span>
+          </footer>
         </div>
-        <footer className="footer">
-          <ul className="recommand-footer">
-            <li className="footer-list">소개</li>
-            <li className="footer-list">도움말</li>
-            <li className="footer-list">홍보센터</li>
-            <li className="footer-list">API</li>
-            <li className="footer-list">채용정보</li>
-            <li className="footer-list">개인정보처리방침</li>
-            <br />
-            <li className="footer-list">약관</li>
-            <li className="footer-list">위치</li>
-            <li className="footer-list">언어</li>
-          </ul>
-          <span className="copyright footer">
-            <i className="fa-regular fa-copyright" />
-            2022 westagram from sujeong
-          </span>
-        </footer>
       </article>
     </main>
   );
