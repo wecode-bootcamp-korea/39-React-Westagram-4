@@ -11,9 +11,6 @@ import Login_ksj from './pages/Kusujeong/Login/Login_ksj';
 import Login_pmy from './pages/Parkmoonyoung/Login/Login_pmy';
 import Login_wsm from './pages/Woosukmin/Login/Login_wsm';
 
-import './styles/reset.scss';
-import './styles/commons.scss';
-
 function Router() {
   return (
     <BrowserRouter>
