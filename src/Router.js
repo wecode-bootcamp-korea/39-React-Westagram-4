@@ -11,6 +11,8 @@ import LoginKsj from './pages/Kusujeong/Login/LoginKsj';
 import LoginPmy from './pages/Parkmoonyoung/Login/LoginPmy';
 import LoginWsm from './pages/Woosukmin/Login/LoginWsm';
 
+import Signup from './pages/Parkmoonyoung/Signup/Signup';
+
 function Router() {
   return (
     <BrowserRouter>
@@ -25,6 +27,8 @@ function Router() {
         <Route path="/mainpmy" element={<MainPmy />} />
         <Route path="/loginwsm" element={<LoginWsm />} />
         <Route path="/mainwsm" element={<MainWsm />} />
+
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
