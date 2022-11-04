@@ -30,7 +30,7 @@ function Router() {
         <Route path="/mainwsm" element={<MainWsm />} />
 
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Practice />} />
+        <Route path="/practice" element={<Practice />} />
       </Routes>
     </BrowserRouter>
   );

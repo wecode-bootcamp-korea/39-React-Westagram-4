@@ -33,27 +33,22 @@ function InputDataArea() {
   // User id data
   let [isIdValue, setIdValue] = useState();
   function saveUserId(e) {
-    isIdValue = e.target.value;
-    console.log({ isIdValue });
+    setIdValue(e.target.value);
     userDataValidation();
   }
 
   // User pw data
   let [isPwValue, setPwValue] = useState();
   function saveUserPw(e) {
-    isPwValue = e.target.value;
-    console.log({ isPwValue });
+    setPwValue(e.target.value);
     userDataValidation();
   }
 
   //
   function userDataValidation() {
-    console.log('isIdValue: ' + isIdValue);
     isIdValue.indexOf('@') > -1 && isPwValue.length > 5
       ? setDisabled('')
       : setDisabled('disabled');
-    console.log({ isDisabled });
-    return isDisabled;
   }
 
   return (
