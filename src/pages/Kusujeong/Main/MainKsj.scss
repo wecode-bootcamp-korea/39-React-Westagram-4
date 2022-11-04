@@ -2,69 +2,6 @@ body {
   background-color: #fafafa;
 }
 
-.navbar {
-  display: flex;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 60px;
-  padding: 0 200px;
-  border-bottom: 2px solid #dbdbdb;
-  background-color: #ffffff;
-
-  .navbar-logo {
-    font-family: 'Lobster', cursive;
-    font-size: 25px;
-  }
-
-  .container-search {
-    position: relative;
-
-    .search {
-      width: 300px;
-      padding: 10px;
-      padding-left: 40px;
-      border: none;
-      border-radius: 10px;
-      background-color: #efefef;
-      color: #8e8e8e;
-    }
-
-    .search-icon {
-      position: absolute;
-      top: 10px;
-      left: 12px;
-    }
-
-    .searchContainer {
-      visibility: hidden;
-      position: absolute;
-      top: 50px;
-      width: 400px;
-      height: 400px;
-      border: 1px solid black;
-      border-radius: 10px;
-      background-color: white;
-    }
-  }
-
-  .menu {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-
-    .menu-item {
-      padding: 8px;
-      font-size: 20px;
-    }
-  }
-}
-
 .main {
   display: flex;
   position: absolute;

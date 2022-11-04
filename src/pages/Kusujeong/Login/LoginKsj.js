@@ -19,10 +19,13 @@ export default function LoginKsj() {
   const opacity = isValidate ? '1' : '0.5';
 
   const navigate = useNavigate();
-  const goToNext = () => {
-    isValidate
-      ? navigate('/mainksj')
-      : alert('입력하신 정보를 다시 확인해주세요');
+  const goToNext = e => {
+    console.log(e.target.nodeName);
+    if (e.key === 'Enter' || e.target.nodeName === 'BUTTON') {
+      isValidate
+        ? navigate('/mainksj')
+        : alert('입력하신 정보를 다시 확인해주세요');
+    }
   };
 
   return (
@@ -36,6 +39,7 @@ export default function LoginKsj() {
             name="id"
             type="text"
             onChange={saveUserValue}
+            onKeyUp={goToNext}
             placeholder="전화번호, 사용자 이름 또는 이메일"
           />
           <input
@@ -44,13 +48,14 @@ export default function LoginKsj() {
             name="pw"
             type="password"
             onChange={saveUserValue}
+            onKeyUp={goToNext}
             placeholder="비밀번호"
           />
           <button
             type="submit"
             className="inputinfo btn"
             id="login-btn"
-            disabled={isValidate}
+            disabled={!isValidate}
             style={{ opacity: opacity }}
             onClick={goToNext}
           >

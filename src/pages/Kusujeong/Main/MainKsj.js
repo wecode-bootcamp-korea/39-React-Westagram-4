@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import './MainKsj.scss';
 import Nav from '../../../components/Nav/Nav';
+import Comment from './Comment';
 
 export default function MainKsj() {
   const imgUrl = '/images/Kusujeong/IMG_8905.JPG';
 
   // Input창에 입력한 텍스트 저장할 state
-  const [comment, setComment] = useState();
+  const [comment, setComment] = useState('');
   // 댓글을 저장할 배열
-  const [commentList] = useState([]);
+  const [commentList, setCommentList] = useState([]);
   // 엔터나 게시버튼을 누르면 commentList에 입력한 댓글을 저장하고 그걸 html에 뿌려준다
   const regiComment = e => {
     if (e.key === 'Enter' || e.target.nodeName === 'BUTTON') {
-      if (comment.length > 0) commentList.push(comment);
-      setComment('');
+      if (comment.length > 0) {
+        setCommentList([...commentList, comment]);
+        setComment('');
+      }
     }
   };
 
@@ -117,21 +120,11 @@ export default function MainKsj() {
                 </div>
                 <div className="article-more">...더보기</div>
               </div>
-              <div className="description-commentAll">댓글 266개 모두 보기</div>
+              <div className="description-commentAll">
+                댓글 {commentList.length}개 모두 보기
+              </div>
               <ul id="commentList">
-                <li className="description-comment">
-                  <div className="article-info">
-                    <div className="ariticle-id">rntnwjd</div>
-                    <div className="article-description">
-                      어머 너무 귀엽당~~!
-                    </div>
-                  </div>
-                  <div className="comment-function">
-                    <button className="comment-delete">삭제</button>
-                    <i className="fa-regular fa-heart" />
-                  </div>
-                </li>
-                {commentList.map((comment, index) => (
+                {/* {commentList.map((comment, index) => (
                   <li className="description-comment" key={index}>
                     <div className="article-info">
                       <div className="ariticle-id">rntnwjd</div>
@@ -142,6 +135,9 @@ export default function MainKsj() {
                       <i className="fa-regular fa-heart" />
                     </div>
                   </li>
+                ))} */}
+                {commentList.map((comment, index) => (
+                  <Comment comment={comment} key={index} />
                 ))}
               </ul>
             </div>
@@ -160,6 +156,7 @@ export default function MainKsj() {
                       setComment(e.target.value);
                     }}
                     onKeyUp={regiComment}
+                    value={comment}
                   />
                 </div>
               </div>
