@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import './LoginWsm.scss';
 
 export default function LoginWsm() {
+  const navigate = useNavigate();
+  const goToMain = () => {
+    if (id.includes('@') && pw.length >= 5) {
+      navigate('/mainwsm');
+    } else {
+      alert('가입된 회원이 아닙니다. 회원가입을 먼저 해주세요.');
+    }
+  };
+  const [active, setActive] = useState(false);
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-  const saveUserId = event => {
-    setId(event.target.value);
-    console.log('id', id);
+  console.log(id);
+  console.log(pw);
+
+  const ActiveIsPassedLogin = () => {
+    return id.includes('@') && pw.length >= 5
+      ? setActive(true)
+      : setActive(false);
   };
-  const saveUserPw = event => {
-    setPw(event.target.value);
-    console.log('pw', pw);
+
+  const saveUserId = e => {
+    setId(e.target.value);
+  };
+  const saveUserPw = e => {
+    setPw(e.target.value);
   };
   return (
     <div className="login-wrap">
@@ -26,6 +42,7 @@ export default function LoginWsm() {
                 className="login-1"
                 type="text"
                 placeholder="전화번호, 사용자 이름 또는 이메일"
+                onKeyUp={ActiveIsPassedLogin}
                 onChange={saveUserId}
                 required
               />
@@ -33,10 +50,17 @@ export default function LoginWsm() {
                 className="login-2"
                 type="password"
                 placeholder="비밀번호"
+                onKeyUp={ActiveIsPassedLogin}
                 onChange={saveUserPw}
                 required
               />
-              <button className="login-bt btstyle" type="submit" disabled>
+              <button
+                className={active ? 'activeloginbtn' : 'loginbtn'}
+                onClick={goToMain}
+                type="button"
+                name=""
+                disabled={id === '' || pw === '' ? true : false}
+              >
                 로그인
               </button>
             </form>

@@ -64,7 +64,7 @@
       height: 212px;
     }
 
-    .login-bt {
+    .activeloginbtn {
       position: absolute;
       top: 92px;
       left: 45px;
@@ -72,11 +72,24 @@
       height: 30px;
       padding: 5px 9px;
       border-radius: 5px;
-      background-color: #0095f6;
-      color: white;
+      background-color: #007bf6;
       text-align: center;
     }
+    .loginbtn {
+      position: absolute;
+      top: 92px;
+      left: 45px;
+      width: 260px;
+      height: 30px;
+      padding: 5px 9px;
+      border-radius: 5px;
+      background-color: #a3d8fb;
+      text-align: center;
 
+      &:disabled {
+        color: black;
+      }
+    }
     .line {
       display: flex;
       position: absolute;
