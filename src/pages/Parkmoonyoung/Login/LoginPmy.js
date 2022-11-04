@@ -28,18 +28,32 @@ function HeadingTag1() {
 }
 
 function InputDataArea() {
-  let [isIdValue, setIdValue] = useState();
+  let [isDisabled, setDisabled] = useState('disabled');
 
+  // User id data
+  let [isIdValue, setIdValue] = useState();
   function saveUserId(e) {
     isIdValue = e.target.value;
     console.log({ isIdValue });
+    userDataValidation();
   }
 
+  // User pw data
   let [isPwValue, setPwValue] = useState();
-
   function saveUserPw(e) {
     isPwValue = e.target.value;
     console.log({ isPwValue });
+    userDataValidation();
+  }
+
+  //
+  function userDataValidation() {
+    console.log('isIdValue: ' + isIdValue);
+    isIdValue.indexOf('@') > -1 && isPwValue.length > 5
+      ? setDisabled('')
+      : setDisabled('disabled');
+    console.log({ isDisabled });
+    return isDisabled;
   }
 
   return (
@@ -60,7 +74,7 @@ function InputDataArea() {
           onChange={saveUserPw}
         />
       </div>
-      <button className="btnLogin" disabled="disabled">
+      <button className="btnLogin" disabled={isDisabled}>
         로그인
       </button>
     </div>
