@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import './LoginWsm.scss';
 
 export default function LoginWsm() {
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  const saveUserId = event => {
+    setId(event.target.value);
+    console.log('id', id);
+  };
+  const saveUserPw = event => {
+    setPw(event.target.value);
+    console.log('pw', pw);
+  };
   return (
     <div className="login-wrap">
       <header>
@@ -15,11 +26,15 @@ export default function LoginWsm() {
                 className="login-1"
                 type="text"
                 placeholder="전화번호, 사용자 이름 또는 이메일"
+                onChange={saveUserId}
+                required
               />
               <input
                 className="login-2"
                 type="password"
                 placeholder="비밀번호"
+                onChange={saveUserPw}
+                required
               />
               <button className="login-bt btstyle" type="submit" disabled>
                 로그인

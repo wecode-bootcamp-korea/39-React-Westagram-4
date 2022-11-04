@@ -376,7 +376,7 @@ export default function MainWsm() {
               </div>
               <div className="dhe-text">
                 <b>17_eda</b>
-                <p>adidas님 외 27명이 팔로우합니다</p>
+                <p>adios님 외 27명이 팔로우합니다</p>
               </div>
               <a href="!#">
                 <b className="follow">팔로우</b>
@@ -386,12 +386,12 @@ export default function MainWsm() {
               <div className="aa">
                 <img
                   className="cat-img"
-                  src="/images/Woosukmin/adidas.png"
+                  src="/images/Woosukmin/adios.jpg"
                   alt="아디다스 로고"
                 />
               </div>
               <div className="dhe-text">
-                <b>adidas</b>
+                <b>adios</b>
                 <p>dgca_jesusclub님 외 11명이 팔로우합니다</p>
               </div>
               <a href="!#">
@@ -402,12 +402,12 @@ export default function MainWsm() {
               <div className="aa">
                 <img
                   className="cat-img"
-                  src="/images/Woosukmin/deagu.png"
-                  alt="대구교구 로고"
+                  src="/images/Woosukmin/amamzoff.jpg"
+                  alt="아마조프 로고"
                 />
               </div>
               <div className="dhe-text">
-                <b>daegucatholicuni</b>
+                <b>amazoff</b>
                 <p>nike님 외 26명이 팔로우합니다</p>
               </div>
               <a href="!#">
