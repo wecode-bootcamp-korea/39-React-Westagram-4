@@ -62,7 +62,7 @@ function InputDataArea() {
         <input
           className="userId"
           type="text"
-          placeholder="전화번호, 사용자 이름 또는 이메일"
+          placeholder="전화번호, 사용자 이름 또는 이메일 "
           onChange={saveUserId}
         />
       </div>
