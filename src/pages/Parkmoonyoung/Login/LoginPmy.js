@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginPmy.scss';
 import { Link } from 'react-router-dom';
 
@@ -28,6 +28,20 @@ function HeadingTag1() {
 }
 
 function InputDataArea() {
+  let [isIdValue, setIdValue] = useState();
+
+  function saveUserId(e) {
+    isIdValue = e.target.value;
+    console.log({ isIdValue });
+  }
+
+  let [isPwValue, setPwValue] = useState();
+
+  function saveUserPw(e) {
+    isPwValue = e.target.value;
+    console.log({ isPwValue });
+  }
+
   return (
     <div className="inputDataArea">
       <div className="loginFormBox">
@@ -35,10 +49,16 @@ function InputDataArea() {
           className="userId"
           type="text"
           placeholder="전화번호, 사용자 이름 또는 이메일"
+          onChange={saveUserId}
         />
       </div>
       <div className="loginFormBox">
-        <input className="userPw" type="password" placeholder="비밀번호" />
+        <input
+          className="userPw"
+          type="password"
+          placeholder="비밀번호"
+          onChange={saveUserPw}
+        />
       </div>
       <button className="btnLogin" disabled="disabled">
         로그인

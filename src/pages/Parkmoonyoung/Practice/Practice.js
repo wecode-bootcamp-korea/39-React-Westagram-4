@@ -1,19 +1,16 @@
 import React from 'react';
 import './Practice.scss';
+import PracticeChild from './PracticeChild';
 
-export default function Signup() {
-  const [liked, setLiked] = React.useState(false);
-  if (liked) {
-    return 'you like this';
+export default function Practice() {
+  function fnTest() {
+    console.log('test');
   }
 
   return (
-    <button
-      onClick={() => {
-        setLiked(true);
-      }}
-    >
-      Like
-    </button>
+    <div>
+      Parent
+      <PracticeChild paramFn={fnTest} />
+    </div>
   );
 }
