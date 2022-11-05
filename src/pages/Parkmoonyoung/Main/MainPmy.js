@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainPmy.scss';
 import { Link } from 'react-router-dom';
+import RepleLi from './RepleLi';
 
 export default function MainPmy() {
   return (
@@ -19,10 +20,10 @@ export default function MainPmy() {
             <div className="searchResultBox">
               <ul>
                 {/* li 동적 생성되야함
-                            <li>
-                                <b className="searchId">myp</b>
-                            </li>
-                             */}
+                    <li>
+                        <b className="searchId">myp</b>
+                    </li>
+                */}
               </ul>
             </div>
           </div>
@@ -123,30 +124,8 @@ export default function MainPmy() {
                   <button className="btn more">더 보기</button>
                 </div>
                 <ul className="repleList">
-                  <li>
-                    <b className="nickName">neceosecius</b>
-                    <span className="txt">거봐 좋았잖아~~~~~~~~</span>
-                    {/* .on 클래스 추가시 활성화 */}
-                    <button className="btn heart">
-                      <span className="blind">좋아요</span>
-                    </button>
-                    <button className="btn delete">
-                      <span className="blind">삭제</span>
-                    </button>
-                    <p className="prevTime">42분 전</p>
-                  </li>
-                  <li>
-                    <b className="nickName">neceosecius</b>
-                    <span className="txt">거봐 안좋았잖아~~~~~~~~</span>
-                    {/* .on 클래스 추가시 활성화 */}
-                    <button className="btn heart">
-                      <span className="blind">좋아요</span>
-                    </button>
-                    <button className="btn delete">
-                      <span className="blind">삭제</span>
-                    </button>
-                    <p className="prevTime">42분 전</p>
-                  </li>
+                  <RepleLi />
+                  <RepleLi />
                 </ul>
               </div>
               <div className="addRepleBox">
