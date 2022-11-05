@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginPmy.scss';
 import { Link } from 'react-router-dom';
 
@@ -29,27 +29,28 @@ function HeadingTag1() {
 
 function InputDataArea() {
   let [isDisabled, setDisabled] = useState('disabled');
+  let [isIdValue, setIdValue] = useState('');
+  let [isPwValue, setPwValue] = useState('');
 
-  // User id data
-  let [isIdValue, setIdValue] = useState();
   function saveUserId(e) {
+    setIdValue(function () {
+      isIdValue = e.target.value;
+    });
     setIdValue(e.target.value);
-    userDataValidation();
+    return isIdValue;
   }
 
-  // User pw data
-  let [isPwValue, setPwValue] = useState();
   function saveUserPw(e) {
+    setPwValue(function () {
+      isPwValue = e.target.value;
+    });
     setPwValue(e.target.value);
-    userDataValidation();
+    return isPwValue;
   }
 
-  //
-  function userDataValidation() {
-    isIdValue.indexOf('@') > -1 && isPwValue.length > 5
-      ? setDisabled('')
-      : setDisabled('disabled');
-  }
+  // isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5
+  //   ? setDisabled()
+  //   : setDisabled('disabled');
 
   return (
     <div className="inputDataArea">
