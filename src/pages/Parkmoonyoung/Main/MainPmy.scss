@@ -361,6 +361,7 @@
   .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList {
     min-height: 40px;
     max-height: 160px;
+    padding: 2px 0;
     overflow-y: auto;
   }
   .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li + li {

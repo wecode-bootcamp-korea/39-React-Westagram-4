@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainPmy.scss';
 import { Link } from 'react-router-dom';
 import RepleLi from './RepleLi';
 
 export default function MainPmy() {
+  const [isRepleValue, setRepleValue] = useState('');
+
+  const [repleData, setRepleData] = useState([
+    { name: 'myp', text: '거봐 내가 좋다고 했지', index: 0 },
+  ]);
+
+  const renderReple = repleData.map(function (data, index) {
+    return <RepleLi data={data} key={index} />;
+  });
+
+  // 인풋 밸류 체크
+  function valueCheck(e) {
+    setRepleValue(e.target.value);
+  }
+
+  // 게시 버튼 클릭시 실행되는 함수
+  function addPost() {
+    setRepleValue('');
+
+    setRepleData([...repleData, { name: 'myp', text: isRepleValue }]);
+  }
+
   return (
     <div className="wrap">
       <nav className="navWrap">
@@ -124,8 +146,8 @@ export default function MainPmy() {
                   <button className="btn more">더 보기</button>
                 </div>
                 <ul className="repleList">
-                  <RepleLi />
-                  <RepleLi />
+                  {/* <RepleLi /> */}
+                  {renderReple}
                 </ul>
               </div>
               <div className="addRepleBox">
@@ -133,8 +155,12 @@ export default function MainPmy() {
                   type="text"
                   className="replePost"
                   placeholder="댓글 달기..."
+                  onChange={valueCheck}
+                  value={isRepleValue}
                 />
-                <button className="btn post">게시</button>
+                <button className="btn post" onClick={addPost}>
+                  게시
+                </button>
                 {/* .active 추가시 활성화 */}
               </div>
             </div>
