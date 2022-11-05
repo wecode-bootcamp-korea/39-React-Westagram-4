@@ -48,9 +48,14 @@ function InputDataArea() {
     return isPwValue;
   }
 
-  // isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5
-  //   ? setDisabled()
-  //   : setDisabled('disabled');
+  useEffect(
+    function () {
+      isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5
+        ? setDisabled()
+        : setDisabled('disabled');
+    },
+    [isIdValue, isPwValue]
+  );
 
   return (
     <div className="inputDataArea">
