@@ -13,14 +13,12 @@ export default function LoginKsj() {
     const targetValues = { ...value, [name]: e.target.value };
     setValue(targetValues);
   };
-  // 렌더링이 한 싸이클이 돌고 나서 저장된 value를 가져오기때문에 저장된 value.id, value.pw를 쓰지 않고 saveUserValue에서 e.target.value 값들을 파라미터로 받아서 바로 사용한다.
   const isValidate =
     value.id.includes('@') && value.pw.length > 5 ? true : false;
   const opacity = isValidate ? '1' : '0.5';
 
   const navigate = useNavigate();
   const goToNext = e => {
-    console.log(e.target.nodeName);
     if (e.key === 'Enter' || e.target.nodeName === 'BUTTON') {
       isValidate
         ? navigate('/mainksj')
