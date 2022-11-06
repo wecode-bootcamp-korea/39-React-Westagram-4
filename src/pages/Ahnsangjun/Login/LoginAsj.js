@@ -14,7 +14,7 @@ export default function LoginAsj() {
     getPw(e.target.value);
   };
 
-  let loginIdPw = id.indexOf('@') !== -1 && pw >= '5';
+  let loginIdPw = id.indexOf('@') !== -1 && pw.length >= '5';
 
   return (
     <div className="login-page">
