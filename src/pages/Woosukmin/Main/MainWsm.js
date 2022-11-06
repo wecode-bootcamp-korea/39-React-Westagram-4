@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import './MainWsm.scss';
 import Nav from '../../../components/Nav/Nav';
+import Comment from './Comment';
 
 export default function MainWsm() {
-  const [comment, setComment] = useState();
-  const [commentList] = useState([]);
+  const [comment, setComment] = useState('');
+  const [commentList, setCommentList] = useState([]);
   const regiComment = e => {
     if (e.key === 'Enter' || e.target.nodeName === 'BUTTON') {
-      if (comment.length > 0) commentList.push(comment);
-      setComment('');
+      if (comment.length > 0) {
+        setCommentList([...commentList, comment]);
+        setComment('');
+      }
     }
   };
   return (
     <>
       <Nav />
-      <div className="navcant">
+      {/* <div className="navcant">
         <div className="logo item">
           <h1>Westagram</h1>
         </div>
@@ -62,7 +65,7 @@ export default function MainWsm() {
             </div>
           </li>
         </div>
-      </div>
+      </div> */}
       <section>
         <div className="section">
           <div className="section-1">
@@ -196,20 +199,10 @@ export default function MainWsm() {
                     maria_0815<span>With My Sun🥰</span>
                   </div>
                   <div className="comments">
-                    <a href="#!">댓글 1004개 모두 보기</a>
+                    <a href="#!">댓글 {commentList.length}개 모두 보기</a>
                   </div>
                   <ul className="comment-ul-1">
-                    <li className="description-comment">
-                      <div className="article-info">
-                        <div className="ariticle-id">andrew_0705</div>
-                        <div className="article-description">Oh! my Jesus</div>
-                      </div>
-                      <div className="comment-function">
-                        <button className="comment-delete">삭제</button>
-                        <i className="fa-regular fa-heart" />
-                      </div>
-                    </li>
-                    {commentList.map((comment, index) => (
+                    {/* {commentList.map((comment, index) => (
                       <li className="description-comment" key={index}>
                         <div className="article-info">
                           <div className="ariticle-id">''</div>
@@ -220,6 +213,9 @@ export default function MainWsm() {
                           <i className="fa-regular fa-heart" />
                         </div>
                       </li>
+                    ))} */}
+                    {commentList.map((comment, index) => (
+                      <Comment comment={comment} key={index} />
                     ))}
                   </ul>
                   <div className="comment-bar">
@@ -237,6 +233,7 @@ export default function MainWsm() {
                           setComment(e.target.value);
                         }}
                         onKeyUp={regiComment}
+                        value={comment}
                       />
                       <button
                         // disabled
@@ -316,10 +313,10 @@ export default function MainWsm() {
                     <span>With My Sun😍</span>
                   </div>
                   <div className="comments">
-                    <a href="#!">댓글 46개 모두 보기</a>
+                    <a href="#!">댓글 {commentList.length}개 모두 보기</a>
                   </div>
                   <ul className="comment-ul-1">
-                    <li className="description-comment">
+                    {/* <li className="description-comment">
                       <div className="article-info">
                         <div className="ariticle-id">john_1011</div>
                         <div className="article-description">Oh! my God</div>
@@ -340,6 +337,9 @@ export default function MainWsm() {
                           <i className="fa-regular fa-heart" />
                         </div>
                       </li>
+                    ))} */}
+                    {commentList.map((comment, index) => (
+                      <Comment comment={comment} key={index} />
                     ))}
                   </ul>
                   <div className="comment-bar">
@@ -357,6 +357,7 @@ export default function MainWsm() {
                           setComment(e.target.value);
                         }}
                         onKeyUp={regiComment}
+                        value={comment}
                       />
                       <button
                         disabled
