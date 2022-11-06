@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainWsm.scss';
+import Nav from '../../../components/Nav/Nav';
 
 export default function MainWsm() {
+  const [comment, setComment] = useState();
+  const [commentList] = useState([]);
+  const regiComment = e => {
+    if (e.key === 'Enter' || e.target.nodeName === 'BUTTON') {
+      if (comment.length > 0) commentList.push(comment);
+      setComment('');
+    }
+  };
   return (
     <>
+      <Nav />
       <div className="navcant">
         <div className="logo item">
           <h1>Westagram</h1>
@@ -188,7 +198,30 @@ export default function MainWsm() {
                   <div className="comments">
                     <a href="#!">댓글 1004개 모두 보기</a>
                   </div>
-                  <ul className="comment-ul-1" />
+                  <ul className="comment-ul-1">
+                    <li className="description-comment">
+                      <div className="article-info">
+                        <div className="ariticle-id">andrew_0705</div>
+                        <div className="article-description">Oh! my Jesus</div>
+                      </div>
+                      <div className="comment-function">
+                        <button className="comment-delete">삭제</button>
+                        <i className="fa-regular fa-heart" />
+                      </div>
+                    </li>
+                    {commentList.map((comment, index) => (
+                      <li className="description-comment" key={index}>
+                        <div className="article-info">
+                          <div className="ariticle-id">''</div>
+                          <div className="article-description">{comment}</div>
+                        </div>
+                        <div className="comment-function">
+                          <button className="comment-delete">삭제</button>
+                          <i className="fa-regular fa-heart" />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                   <div className="comment-bar">
                     <img
                       className="comment-img"
@@ -200,13 +233,20 @@ export default function MainWsm() {
                         className="comment-input-1"
                         placeholder="댓글입력..."
                         type="text"
+                        onChange={e => {
+                          setComment(e.target.value);
+                        }}
+                        onKeyUp={regiComment}
                       />
                       <button
-                        disabled
+                        // disabled
                         className="comment-button-1"
-                        type="submit"
+                        // type="submit"
+                        onClick={regiComment}
                       >
-                        <h1 className="posting-1">게시</h1>
+                        {/* {/* <h1 className="posting-1"> */}
+                        게시
+                        {/* </h1> */}
                       </button>
                     </form>
                   </div>
@@ -278,9 +318,30 @@ export default function MainWsm() {
                   <div className="comments">
                     <a href="#!">댓글 46개 모두 보기</a>
                   </div>
-
-                  <ul className="comment-ul" />
-
+                  <ul className="comment-ul-1">
+                    <li className="description-comment">
+                      <div className="article-info">
+                        <div className="ariticle-id">john_1011</div>
+                        <div className="article-description">Oh! my God</div>
+                      </div>
+                      <div className="comment-function">
+                        <button className="comment-delete">삭제</button>
+                        <i className="fa-regular fa-heart" />
+                      </div>
+                    </li>
+                    {commentList.map((comment, index) => (
+                      <li className="description-comment" key={index}>
+                        <div className="article-info">
+                          <div className="ariticle-id">''</div>
+                          <div className="article-description">{comment}</div>
+                        </div>
+                        <div className="comment-function">
+                          <button className="comment-delete">삭제</button>
+                          <i className="fa-regular fa-heart" />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                   <div className="comment-bar">
                     <img
                       className="comment-img"
@@ -292,13 +353,19 @@ export default function MainWsm() {
                         className="comment-input-2"
                         placeholder="댓글입력..."
                         type="text"
+                        onChange={e => {
+                          setComment(e.target.value);
+                        }}
+                        onKeyUp={regiComment}
                       />
                       <button
                         disabled
                         className="comment-button-2"
                         type="submit"
                       >
-                        <h1 className="posting-2">게시</h1>{' '}
+                        <h1 className="posting-2" onClick={regiComment}>
+                          게시
+                        </h1>{' '}
                       </button>
                     </form>
                   </div>
@@ -402,7 +469,7 @@ export default function MainWsm() {
               <div className="aa">
                 <img
                   className="cat-img"
-                  src="/images/Woosukmin/amamzoff.jpg"
+                  src="/images/Woosukmin/amazoff.jpg"
                   alt="아마조프 로고"
                 />
               </div>

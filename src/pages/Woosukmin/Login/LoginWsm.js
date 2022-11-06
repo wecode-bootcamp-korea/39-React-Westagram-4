@@ -14,8 +14,6 @@ export default function LoginWsm() {
   const [active, setActive] = useState(false);
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-  console.log(id);
-  console.log(pw);
 
   const ActiveIsPassedLogin = () => {
     return id.includes('@') && pw.length >= 5
