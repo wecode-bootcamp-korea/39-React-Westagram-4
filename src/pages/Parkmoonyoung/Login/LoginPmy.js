@@ -33,17 +33,11 @@ function InputDataArea() {
   let [isPwValue, setPwValue] = useState('');
 
   function saveUserId(e) {
-    setIdValue(function () {
-      isIdValue = e.target.value;
-    });
     setIdValue(e.target.value);
     return isIdValue;
   }
 
   function saveUserPw(e) {
-    setPwValue(function () {
-      isPwValue = e.target.value;
-    });
     setPwValue(e.target.value);
     return isPwValue;
   }
