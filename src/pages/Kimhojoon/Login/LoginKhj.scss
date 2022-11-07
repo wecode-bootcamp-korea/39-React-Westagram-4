@@ -1,40 +1,44 @@
-.westagram {
-  font-family: 'Lobster', cursive;
+@mixin loginflex($direction, $align) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+}
+
+@mixin borderline {
+  border: 2px solid #e6e6e6;
 }
 
 .container {
+  @include borderline;
+  @include loginflex(column, center);
   margin: 100px auto;
   width: 500px;
-  border: 2px solid #e6e6e6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #ffffff;
-}
 
-.westagram {
-  font-size: 70px;
-  margin-top: 50px;
+  .westagram {
+    font-family: 'Lobster', cursive;
+    font-size: 70px;
+    margin-top: 50px;
+  }
 }
 
 .userinfo {
   margin-top: 50px;
-}
-.id,
-.password {
-  border: 2px solid #e6e6e6;
-  margin-bottom: 15px;
-  border-radius: 4px;
-}
-
-.inputid,
-.inputpassword {
-  width: 400px;
-  border: none;
-  height: 50px;
-  background-color: #fafafa;
-  padding: 0 10px;
-  font-size: 16px;
+  .id2,
+  .password {
+    @include borderline;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  .inputid,
+  .inputpassword {
+    width: 400px;
+    border: none;
+    height: 50px;
+    background-color: #fafafa;
+    padding: 0 10px;
+    font-size: 16px;
+  }
 }
 
 .loginbutton {
@@ -49,13 +53,78 @@
   margin-bottom: 170px;
 }
 
-button:disabled {
-  background-color: #c4e1fb;
+button {
+  &:disabled {
+    background-color: #c4e1fb;
+  }
 }
 
 .forget {
   margin-bottom: 40px;
+  a {
+    &:visited {
+      color: #003469;
+    }
+  }
 }
-a:visited {
-  color: #003469;
-}
+
+// .westagram {
+//   font-family: 'Lobster', cursive;
+//   font-size: 70px;
+//   margin-top: 50px;
+// }
+
+// .container {
+//   margin: 100px auto;
+//   width: 500px;
+//   border: 2px solid #e6e6e6;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: #ffffff;
+// }
+
+// .userinfo {
+//   margin-top: 50px;
+// }
+
+// .id2,
+// .password {
+//   border: 2px solid #e6e6e6;
+//   margin-bottom: 15px;
+//   border-radius: 4px;
+// }
+
+// .inputid,
+// .inputpassword {
+//   width: 400px;
+//   border: none;
+//   height: 50px;
+//   background-color: #fafafa;
+//   padding: 0 10px;
+//   font-size: 16px;
+// }
+
+// .loginbutton {
+//   width: 400px;
+//   margin-top: 10px;
+//   background-color: #0095f6;
+//   font-size: 22px;
+//   padding: 10px 0;
+//   color: white;
+//   border: none;
+//   border-radius: 7px;
+//   margin-bottom: 170px;
+// }
+
+// button:disabled {
+//   background-color: #c4e1fb;
+// }
+
+// .forget {
+//   margin-bottom: 40px;
+// }
+
+// a:visited {
+//   color: #003469;
+// }
