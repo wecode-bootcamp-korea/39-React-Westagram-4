@@ -15,7 +15,6 @@ export default function LoginAsj() {
   };
 
   let loginIdPw = id.indexOf('@') !== -1 && pw.length >= '5';
-
   return (
     <div className="login-page">
       <div className="main_login_box">
@@ -42,7 +41,7 @@ export default function LoginAsj() {
           </div>
           <div className="login_box_a">
             <label htmlFor="login_button" />
-            <Link to="mainasj">
+            <Link to="MainAsj">
               <button
                 className={loginIdPw ? 'rightValue' : 'wrongValue'}
                 disabled={loginIdPw !== true}
