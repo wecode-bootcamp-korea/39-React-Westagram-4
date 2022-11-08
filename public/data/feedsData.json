@@ -4,23 +4,20 @@
     "userId": "myp",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
-    "repleId": "moonyoung",
-    "text": "안녕, 세상"
+    "repleId": "moonyoung"
   },
   {
     "id": 2,
     "userId": "moonyoung",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/myp-mount.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/myp-mount.jpg",
-    "repleId": "myp",
-    "text": "hello world"
+    "repleId": "myp"
   },
   {
     "id": 3,
     "userId": "myp",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
-    "repleId": "moonyoung",
-    "text": "안녕, 세상"
+    "repleId": "moonyoung"
   }
 ]
