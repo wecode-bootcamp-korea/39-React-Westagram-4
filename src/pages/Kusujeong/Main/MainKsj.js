@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './MainKsj.scss';
 import Nav from '../../../components/Nav/Nav';
 import Comment from './Comment';
+import { FOOTER_INFO_LIST } from './Footer';
 
 export default function MainKsj() {
   const imgUrl = '/images/Kusujeong/IMG_8905.JPG';
@@ -324,7 +325,7 @@ export default function MainKsj() {
             </div>
             <footer className="footer">
               <ul className="recommand-footer">
-                <li className="footer-list">소개</li>
+                {/* <li className="footer-list">소개</li>
                 <li className="footer-list">도움말</li>
                 <li className="footer-list">홍보센터</li>
                 <li className="footer-list">API</li>
@@ -333,7 +334,14 @@ export default function MainKsj() {
                 <br />
                 <li className="footer-list">약관</li>
                 <li className="footer-list">위치</li>
-                <li className="footer-list">언어</li>
+                <li className="footer-list">언어</li> */}
+                {FOOTER_INFO_LIST.map(info => (
+                  <li className="footer-list" key={info.id}>
+                    <a href="" className="footer-info">
+                      {info.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
               <span className="copyright footer">
                 <i className="fa-regular fa-copyright" />

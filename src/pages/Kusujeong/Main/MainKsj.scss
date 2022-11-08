@@ -373,9 +373,13 @@ body {
         .footer-list {
           display: inline-block;
           margin: 3px;
-          color: #8e8e8e;
-          font-size: 12px;
-          text-align: center;
+
+          .footer-info {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-align: center;
+            text-decoration-line: none;
+          }
         }
       }
     }
