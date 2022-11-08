@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './LoginKsj.scss';
 import { useNavigate } from 'react-router-dom';
+import './LoginKsj.scss';
 
 export default function LoginKsj() {
   const [value, setValue] = useState({
@@ -9,8 +9,8 @@ export default function LoginKsj() {
   });
 
   const saveUserValue = e => {
-    const name = e.target.name;
-    const targetValues = { ...value, [name]: e.target.value };
+    const { name, value } = e.target;
+    const targetValues = { ...value, [name]: value };
     setValue(targetValues);
   };
   const isValidate =
