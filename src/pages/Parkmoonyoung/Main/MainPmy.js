@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './MainPmy.scss';
 import { Link } from 'react-router-dom';
 import RepleLi from './RepleLi';
+import { Data_Info_Area } from './Data_Info_Area';
 
 export default function MainPmy() {
   const [isRepleValue, setRepleValue] = useState('');
@@ -341,39 +342,18 @@ export default function MainPmy() {
 
             <div className="dataInfoArea">
               <ul>
+                {Data_Info_Area.map(info => {
+                  return (
+                    <li key={info.id}>
+                      <Link to={info.url}>{info.text}</Link>
+                    </li>
+                  );
+                })}
+                {/* 
                 <li>
-                  <a href="javascript;void(0)">Instagram 정보</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">지원</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">홍보 센터</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">API</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">채용 정보</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">개인정보처리방침</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">약관</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">디렉터리</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">프로필</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">해시태그</a>
-                </li>
-                <li>
-                  <a href="javascript;void(0)">언어</a>
-                </li>
+                  <a href="javascript:void(0)">Instagram 정보</a>
+                </li> 
+                */}
               </ul>
 
               <p className="copyRight">© 2019 INSTAGRAM</p>
