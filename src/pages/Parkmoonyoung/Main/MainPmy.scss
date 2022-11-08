@@ -370,6 +370,7 @@
   .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li {
     position: relative;
     padding-right: 20px;
+    &.hidden{display:none;}
   }
   .feedsWrap
     .feedsArea
