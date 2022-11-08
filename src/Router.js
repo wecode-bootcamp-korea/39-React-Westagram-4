@@ -13,6 +13,7 @@ import LoginWsm from './pages/Woosukmin/Login/LoginWsm';
 
 import Signup from './pages/Parkmoonyoung/Signup/Signup';
 import Practice from './pages/Parkmoonyoung/Practice/Practice';
+import UserData from './pages/Parkmoonyoung/UserData/UserData';
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function Router() {
 
         <Route path="/signup" element={<Signup />} />
         <Route path="/practice" element={<Practice />} />
+        <Route path="/userdata" element={<UserData />} />
       </Routes>
     </BrowserRouter>
   );
