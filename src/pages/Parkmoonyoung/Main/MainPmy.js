@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MainPmy.scss';
 import { Link } from 'react-router-dom';
 import RepleLi from './RepleLi';
 import { Data_Info_Area } from './Data_Info_Area';
 
 export default function MainPmy() {
+  const [isFeedsData, setFeedsData] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/feedsData.json')
+      .then(response => {
+        return response.json();
+      })
+      .then(feedsData => {
+        return setFeedsData(feedsData);
+        //return console.log(feedsData);
+      });
+  }, []);
+
+  /*******   ******/
   const [isRepleValue, setRepleValue] = useState('');
 
   const [repleData, setRepleData] = useState([
@@ -83,88 +97,172 @@ export default function MainPmy() {
 
       <div className="mainWrap">
         <div className="feedsWrap">
-          <div className="feedsArea">
-            <div className="feedsHeader">
-              <div className="profileBox">
-                <div className="imgBox">
-                  <img
-                    src="/images/Parkmoonyoung/profile/my-profile.jpg"
-                    alt="myp"
-                  />
-                </div>
-                <span className="nickName">myp</span>
-              </div>
-              <button className="btn detail">
-                <span className="blind">상세보기</span>
-              </button>
-            </div>
+          <div className="feedsLoopArea">
+            {/* 피드 반복 구간 */}
+            {isFeedsData.map(function (feeds) {
+              return (
+                <div className="feedsArea" key={feeds.id}>
+                  <div className="feedsHeader">
+                    <div className="profileBox">
+                      <div className="imgBox">
+                        <img
+                          src="/images/Parkmoonyoung/profile/my-profile.jpg"
+                          alt="myp"
+                        />
+                      </div>
+                      <span className="nickName">myp</span>
+                    </div>
+                    <button className="btn detail">
+                      <span className="blind">상세보기</span>
+                    </button>
+                  </div>
 
-            <div className="feedsContentsArea">
-              <div className="feedsImgArea">
-                <ul>
-                  <li>
-                    <img
-                      src="/images/Parkmoonyoung/profile/my-profile.jpg"
-                      alt="myp"
-                    />
-                  </li>
-                </ul>
-              </div>
-              <div className="feedsUtilArea">
-                <div className="feedsBtnArea">
-                  <button className="btn heart active">
-                    <span className="blind">좋아요</span>
-                  </button>{' '}
-                  {/* .active 추가시 활성화 */}
-                  <button className="btn reple">
-                    <span className="blind">리플쓰기</span>
-                  </button>
-                  <button className="btn share">
-                    <span className="blind">공유하기</span>
-                  </button>
-                  <button className="btn favorite">
-                    <span className="blind">즐겨찾기</span>
-                  </button>
+                  <div className="feedsContentsArea">
+                    <div className="feedsImgArea">
+                      <ul>
+                        <li>
+                          <img
+                            src="/images/Parkmoonyoung/profile/my-profile.jpg"
+                            alt="myp"
+                          />
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="feedsUtilArea">
+                      <div className="feedsBtnArea">
+                        <button className="btn heart active">
+                          <span className="blind">좋아요</span>
+                        </button>{' '}
+                        <button className="btn reple">
+                          <span className="blind">리플쓰기</span>
+                        </button>
+                        <button className="btn share">
+                          <span className="blind">공유하기</span>
+                        </button>
+                        <button className="btn favorite">
+                          <span className="blind">즐겨찾기</span>
+                        </button>
+                      </div>
+                      <div className="repleTotal">
+                        <div className="imgBox">
+                          <img
+                            src="/images/Parkmoonyoung/profile/my-profile.jpg"
+                            alt="myp"
+                          />
+                        </div>
+                        <p className="totalTxt">
+                          <span className="firstlyNick">aineworld</span>님{' '}
+                          <span className="totalNumber">외 10명</span>이
+                          좋아합니다
+                        </p>
+                      </div>
+                      <div className="myReple reduce">
+                        <b className="myName">myp</b>
+                        <span className="txt">
+                          위워크에서 진행한 베이킹 클래스...
+                        </span>
+                        <button className="btn more">더 보기</button>
+                      </div>
+                      <ul className="repleList">{renderReple}</ul>
+                    </div>
+                    <div className="addRepleBox">
+                      <input
+                        type="text"
+                        className="replePost"
+                        placeholder="댓글 달기..."
+                        onChange={valueCheck}
+                        value={isRepleValue}
+                      />
+                      <button className="btn post" onClick={addPost}>
+                        게시
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className="repleTotal">
+              );
+            })}
+
+            {/*
+            <div className="feedsArea">
+              <div className="feedsHeader">
+                <div className="profileBox">
                   <div className="imgBox">
                     <img
                       src="/images/Parkmoonyoung/profile/my-profile.jpg"
                       alt="myp"
                     />
                   </div>
-                  <p className="totalTxt">
-                    <span className="firstlyNick">aineworld</span>님{' '}
-                    <span className="totalNumber">외 10명</span>이 좋아합니다
-                  </p>
+                  <span className="nickName">myp</span>
                 </div>
-                <div className="myReple reduce">
-                  {/* .myReple : 내 리플, 글자 길 때 말줄임 사용 / [.reduce] 추가 */}
-                  <b className="myName">myp</b>
-                  <span className="txt">
-                    위워크에서 진행한 베이킹 클래스...
-                  </span>
-                  <button className="btn more">더 보기</button>
-                </div>
-                <ul className="repleList">
-                  {/* <RepleLi /> */}
-                  {renderReple}
-                </ul>
-              </div>
-              <div className="addRepleBox">
-                <input
-                  type="text"
-                  className="replePost"
-                  placeholder="댓글 달기..."
-                  onChange={valueCheck}
-                  value={isRepleValue}
-                />
-                <button className="btn post" onClick={addPost}>
-                  게시
+                <button className="btn detail">
+                  <span className="blind">상세보기</span>
                 </button>
-                {/* .active 추가시 활성화 */}
+              </div>
+
+              <div className="feedsContentsArea">
+                <div className="feedsImgArea">
+                  <ul>
+                    <li>
+                      <img
+                        src="/images/Parkmoonyoung/profile/my-profile.jpg"
+                        alt="myp"
+                      />
+                    </li>
+                  </ul>
+                </div>
+                <div className="feedsUtilArea">
+                  <div className="feedsBtnArea">
+                    <button className="btn heart active">
+                      <span className="blind">좋아요</span>
+                    </button>{' '}
+                    <button className="btn reple">
+                      <span className="blind">리플쓰기</span>
+                    </button>
+                    <button className="btn share">
+                      <span className="blind">공유하기</span>
+                    </button>
+                    <button className="btn favorite">
+                      <span className="blind">즐겨찾기</span>
+                    </button>
+                  </div>
+                  <div className="repleTotal">
+                    <div className="imgBox">
+                      <img
+                        src="/images/Parkmoonyoung/profile/my-profile.jpg"
+                        alt="myp"
+                      />
+                    </div>
+                    <p className="totalTxt">
+                      <span className="firstlyNick">aineworld</span>님{' '}
+                      <span className="totalNumber">외 10명</span>이 좋아합니다
+                    </p>
+                  </div>
+                  <div className="myReple reduce">
+                    <b className="myName">myp</b>
+                    <span className="txt">
+                      위워크에서 진행한 베이킹 클래스...
+                    </span>
+                    <button className="btn more">더 보기</button>
+                  </div>
+                  <ul className="repleList">
+                    {renderReple}
+                  </ul>
+                </div>
+                <div className="addRepleBox">
+                  <input
+                    type="text"
+                    className="replePost"
+                    placeholder="댓글 달기..."
+                    onChange={valueCheck}
+                    value={isRepleValue}
+                  />
+                  <button className="btn post" onClick={addPost}>
+                    게시
+                  </button>
+                </div>
               </div>
             </div>
+            */}
           </div>
 
           <div className="feedsAsideArea">

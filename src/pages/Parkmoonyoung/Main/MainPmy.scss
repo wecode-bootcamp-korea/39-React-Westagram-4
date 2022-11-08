@@ -196,6 +196,9 @@
     padding: 75px 25px 0 25px;
   }
   .feedsWrap .feedsArea {
+    & + .feedsArea {
+      margin-top: 20px;
+    }
     width: 820px;
     overflow: hidden;
     border: 1px solid #ddd;
@@ -370,7 +373,9 @@
   .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li {
     position: relative;
     padding-right: 20px;
-    &.hidden{display:none;}
+    &.hidden {
+      display: none;
+    }
   }
   .feedsWrap
     .feedsArea
