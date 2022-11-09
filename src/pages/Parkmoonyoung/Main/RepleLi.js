@@ -8,7 +8,7 @@ export default function RepleLi(props) {
 
   return (
     <li className={isLiStatus}>
-      <b className="nickName">neceosecius</b>
+      <b className="nickName">{props.data.name}</b>
       <span className="txt">{props.data.text}</span>
       {/* .on 클래스 추가시 활성화 */}
       <button className="btn heart">
