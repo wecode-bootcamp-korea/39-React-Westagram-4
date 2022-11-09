@@ -4,20 +4,27 @@
     "userId": "myp",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
-    "repleId": "moonyoung"
+    "repleId": "moonyoung",
+    "personalRepleData": [
+      { "name": "myp", "text": "거봐 내가 좋다고 했지", "index": 0 }
+    ]
   },
   {
     "id": 2,
     "userId": "moonyoung",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/myp-mount.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/myp-mount.jpg",
-    "repleId": "myp"
+    "repleId": "myp",
+    "personalRepleData": [
+      { "name": "moonyoung", "text": "아오 어려워", "index": 0 }
+    ]
   },
   {
     "id": 3,
     "userId": "myp",
     "userThumbImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
     "userFeedsImgUrl": "/images/Parkmoonyoung/profile/my-profile.jpg",
-    "repleId": "moonyoung"
+    "repleId": "moonyoung",
+    "personalRepleData": []
   }
 ]
