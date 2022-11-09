@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainAsj.scss';
+import Comment from './Comment';
 
-export default function MainAsj() {
+function MainAsj() {
+  const [commentValue, setCommentValue] = useState('');
+
+  const [comments, setComments] = useState([{ title: '댓글' }]);
+
+  const renderComments = comments.map(comment => {
+    return <Comment comment={comment} key={comment.value} />;
+  });
+
+  const addComment = e => {
+    e.preventDefault();
+
+    setComments([
+      ...comments,
+      {
+        title: commentValue,
+      },
+    ]);
+    setCommentValue('');
+  };
+
   return (
     <>
       {/* <!-- 컨테이너 --> */}
@@ -94,14 +115,19 @@ export default function MainAsj() {
                   <div className="inner">
                     <i className="fa-regular fa-face-smile" />
 
-                    <form className="comment__form">
+                    <form onSubmit={addComment} className="comment__form">
                       <input
+                        type="text"
+                        value={commentValue}
                         className="write__input"
                         placeholder="Add a comment..."
+                        onChange={e => setCommentValue(e.target.value)}
                       />
-
-                      <button className="post">post</button>
+                      <button type="submit" className="post">
+                        post
+                      </button>
                     </form>
+                    {renderComments}
                   </div>
                 </div>
               </div>
@@ -202,3 +228,5 @@ export default function MainAsj() {
     </>
   );
 }
+
+export default MainAsj;
