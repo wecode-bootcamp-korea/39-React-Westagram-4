@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './MainPmy.scss';
 import { Link } from 'react-router-dom';
 import FeedsArea from './FeedsArea';
 import { Data_Info_Area } from './Data_Info_Area';
+import './MainPmy.scss';
 
 export default function MainPmy() {
   useEffect(() => {
