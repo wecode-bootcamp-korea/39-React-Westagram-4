@@ -5,13 +5,7 @@
     "userName": "9sssu",
     "feedImg": "../images/Kusujeong/IMG_8905.JPG",
     "feedContent": "귀여운 사모예드찡",
-    "comments": [
-      {
-        "id": 1,
-        "userName": "rntnwjd",
-        "commentContent": ""
-      }
-    ]
+    "comments": []
   },
   {
     "id": 2,
@@ -19,12 +13,6 @@
     "userName": "wlgus",
     "feedImg": "../images/Kusujeong/birthday.jpeg",
     "feedContent": "생일 축하해줘서 고마워",
-    "comments": [
-      {
-        "id": 1,
-        "userName": "9sssu",
-        "commentContent": ""
-      }
-    ]
+    "comments": []
   }
 ]
