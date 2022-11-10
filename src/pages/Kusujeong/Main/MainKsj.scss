@@ -112,6 +112,14 @@ body {
           > * {
             margin-left: 12px;
           }
+
+          .feed-like {
+            color: red;
+          }
+
+          .feed-like:hover {
+            cursor: pointer;
+          }
         }
 
         .feed-middle_list {
@@ -164,7 +172,7 @@ body {
           text-align: left;
         }
 
-        #commentList {
+        .commentList {
           .description-comment {
             display: flex;
             justify-content: space-between;

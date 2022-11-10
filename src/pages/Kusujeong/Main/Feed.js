@@ -6,6 +6,10 @@ export default function Feed({ feedInfo }) {
   const [comment, setComment] = useState('');
   // 댓글을 저장할 배열
   const [commentList, setCommentList] = useState([]);
+  const [feedLike, setFeedLike] = useState({
+    state: false,
+    count: 0,
+  });
 
   // 댓글 등록
   // 엔터나 게시버튼을 누르면 commentList에 입력한 댓글을 저장하고 그걸 html에 뿌려준다
@@ -17,7 +21,6 @@ export default function Feed({ feedInfo }) {
       }
     }
   };
-
   // 댓글 삭제
   const deleteComment = index => {
     return () => {
@@ -25,6 +28,16 @@ export default function Feed({ feedInfo }) {
       commentArr.splice(index, 1);
       setCommentList(commentArr);
     };
+  };
+  //피드 좋아요 기능
+  const increaseLikeCount = e => {
+    if (e.target.nodeName == 'I') {
+      e.target.classList.toggle('feed-like');
+      e.target.classList.toggle('fa-solid');
+      let cnt = feedLike.count;
+      cnt = feedLike.state === true ? cnt + 1 : cnt - 1;
+      setFeedLike({ ...feedLike, count: cnt });
+    }
   };
 
   return (
@@ -45,7 +58,7 @@ export default function Feed({ feedInfo }) {
       </div>
       <div className="feed-list">
         <div className="feed-left_list">
-          <i className="fa-regular fa-heart" />
+          <i className="fa-regular fa-heart" onClick={increaseLikeCount} />
           <i className="fa-regular fa-comment" />
           <i className="fa-regular fa-paper-plane" />
         </div>
@@ -62,7 +75,7 @@ export default function Feed({ feedInfo }) {
         </div>
       </div>
       <div className="feed-description">
-        <div className="description-like">좋아요 3,460개</div>
+        <div className="description-like">좋아요 {feedLike.count}개</div>
         <div className="description-article">
           <div className="article-info">
             <div className="ariticle-id">{feedInfo.userName}</div>
@@ -73,7 +86,7 @@ export default function Feed({ feedInfo }) {
         <div className="description-commentAll">
           댓글 {commentList.length}개 모두 보기
         </div>
-        <ul id="commentList">
+        <ul className="commentList">
           {commentList.map((comment, index) => (
             <Comment
               comment={comment}
