@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "profileImg": "../images/Kusujeong/IMG_8905.JPG",
+    "userName": "9sssu",
+    "feedImg": "../images/Kusujeong/IMG_8905.JPG",
+    "feedContent": "귀여운 사모예드찡",
+    "comments": []
+  },
+  {
+    "id": 2,
+    "profileImg": "../images/Kusujeong/birthday.jpeg",
+    "userName": "wlgus",
+    "feedImg": "../images/Kusujeong/birthday.jpeg",
+    "feedContent": "생일 축하해줘서 고마워",
+    "comments": []
+  }
+]

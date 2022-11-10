@@ -1,0 +1,395 @@
+body {
+  background-color: #fafafa;
+}
+
+.main {
+  display: flex;
+  position: absolute;
+  top: 650px;
+  left: 50%;
+  flex-flow: row nowrap;
+  transform: translate(-50%, -35%);
+  text-align: center;
+
+  .main-left {
+    margin-right: 40px;
+
+    .stories {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      width: 450px;
+      height: 100px;
+      margin-bottom: 20px;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      background-color: #ffffff;
+      text-align: center;
+
+      .story {
+        display: flex;
+        width: 100%;
+
+        > * {
+          list-style: none;
+        }
+
+        .story-profile {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+
+        .story-id {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .feed {
+      width: 450px;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      background-color: #ffffff;
+
+      .feed-header {
+        display: flex;
+        position: relative;
+        top: 5px;
+        right: 10px;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: auto;
+
+        .feed-logo {
+          display: inline;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          padding: 10px;
+
+          .feed-profile {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+          }
+
+          .feed-menu {
+            display: flex;
+            position: relative;
+            right: 30px;
+            flex-flow: row nowrap;
+            align-items: center;
+          }
+        }
+      }
+
+      .feed-article {
+        .feed-img {
+          width: 450px;
+          height: 450px;
+        }
+      }
+
+      .feed-list {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        .feed-left_list {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: center;
+          font-size: 25px;
+
+          > * {
+            margin-left: 12px;
+          }
+
+          .feed-like {
+            color: red;
+          }
+
+          .feed-like:hover {
+            cursor: pointer;
+          }
+        }
+
+        .feed-middle_list {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: center;
+
+          .middle-dot {
+            width: 6px;
+            height: 6px;
+            margin-right: 4px;
+            border-radius: 50%;
+            background-color: #8e8e8e;
+          }
+        }
+
+        .feed-right_list {
+          width: 111px;
+          font-size: 25px;
+        }
+      }
+
+      .feed-description {
+        .description-like {
+          margin-bottom: 15px;
+          padding-left: 10px;
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .description-article {
+          display: flex;
+          margin-bottom: 15px;
+
+          .article-info {
+            display: flex;
+          }
+
+          .ariticle-id {
+            margin: 0 10px;
+            font-weight: bold;
+          }
+        }
+
+        .description-commentAll {
+          margin-bottom: 15px;
+          padding-left: 10px;
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .commentList {
+          .description-comment {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 20px;
+            margin-bottom: 15px;
+
+            .article-info {
+              display: flex;
+
+              .ariticle-id {
+                margin: 0 10px;
+                font-weight: bold;
+              }
+            }
+
+            .comment-function {
+              .comment-delete {
+                border: none;
+                background-color: transparent;
+              }
+
+              .comment-like {
+                color: red;
+              }
+
+              .comment-delete:hover,
+              .comment-like:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .description-date {
+        margin-bottom: 15px;
+        padding-left: 10px;
+        color: #b1b1b1;
+        font-size: 5px;
+        text-align: left;
+      }
+
+      .feed-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .footer-logo {
+          display: flex;
+          align-items: center;
+
+          .footer-smile {
+            margin: 0 10px;
+            font-size: 30px;
+          }
+
+          .footer-comment {
+            width: 200px;
+
+            .comment-input {
+              width: 360px;
+              border: none;
+            }
+          }
+        }
+
+        .footer-enter {
+          .btn {
+            border: none;
+            background-color: transparent;
+            color: #0095f6;
+          }
+        }
+      }
+    }
+  }
+
+  .main-right {
+    .right-container {
+      .myProfile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 320px;
+        height: 90px;
+
+        .myProfile-logo {
+          display: flex;
+          align-items: center;
+
+          .profile-img {
+            margin-right: 15px;
+
+            .story-profile {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+          }
+
+          .profile-info {
+            .profile-id {
+              font-weight: bold;
+            }
+
+            .profile-name {
+              color: #8e8e8e;
+              font-size: 15px;
+            }
+          }
+        }
+
+        .profile-change {
+          .btn {
+            border: none;
+            background-color: transparent;
+            color: #0095f6;
+          }
+        }
+      }
+
+      .recommand {
+        width: 320px;
+
+        .recommand-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+
+          .title-1 {
+            color: #8e8e8e;
+            font-size: 15px;
+          }
+
+          .title-2 {
+            .recommand-btn {
+              border: none;
+              background-color: transparent;
+              font-size: 12px;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .recommend-user {
+          .recoProfile {
+            /* height: 40px; */
+            /* display: flex; */
+            align-items: center;
+            width: 320px;
+            /* justify-content: space-between; */
+
+            .recoProfile-list {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+              margin-bottom: 8px;
+
+              .recoProfile-logo {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .recoprofile-img {
+                  margin-right: 15px;
+
+                  .reco-profile {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                  }
+                }
+
+                .reco-profile-info {
+                  text-align: left;
+
+                  .reco-profile-id {
+                    margin-bottom: 3px;
+                  }
+
+                  .reco-profile-name {
+                    font-size: 13px;
+                  }
+                }
+              }
+
+              .profile-follow {
+                .btn {
+                  border: none;
+                  background-color: transparent;
+                  color: #0095f6;
+                }
+              }
+            }
+          }
+        }
+      }
+      .footer {
+        margin: 15px 0;
+        color: #8e8e8e;
+        font-size: 12px;
+        text-align: left;
+
+        .footer-list {
+          display: inline-block;
+          margin: 3px;
+
+          .footer-info {
+            color: #8e8e8e;
+            font-size: 12px;
+            text-align: center;
+            text-decoration-line: none;
+          }
+        }
+      }
+    }
+  }
+}
