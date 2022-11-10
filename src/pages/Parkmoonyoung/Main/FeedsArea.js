@@ -12,12 +12,14 @@ export default function FeedsArea(props) {
   }
 
   // 게시 버튼 클릭시 실행되는 함수
-  function addPost() {
-    //console.log(isRepleValue);
-    //console.log(repleData);
-    setRepleValue('');
-
-    setRepleData([...repleData, { name: 'myp', text: isRepleValue }]);
+  function addPost(e) {
+    if (
+      (e.target.className === 'btn post' || e.keyCode === 13) &&
+      isRepleValue.length > 0
+    ) {
+      setRepleValue('');
+      setRepleData([...repleData, { name: 'myp', text: isRepleValue }]);
+    }
   }
 
   return (
@@ -90,6 +92,7 @@ export default function FeedsArea(props) {
             placeholder="댓글 달기..."
             onChange={valueCheck}
             value={isRepleValue}
+            onKeyUp={addPost}
           />
           <button className="btn post" onClick={addPost}>
             게시
