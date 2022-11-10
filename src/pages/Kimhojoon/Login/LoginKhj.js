@@ -1,29 +1,47 @@
 import React, { useState } from 'react';
 import './LoginKhj.scss';
 import { useNavigate } from 'react-router-dom';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 export default function LoginKhj() {
   const navigate = useNavigate();
-  const goToMain = () => {
-    navigate('/MainKhj');
-  };
-
   const [idValue, setIdValue] = useState('');
+  const [pwValue, setPwValue] = useState('');
+
   const saveUserId = e => {
     setIdValue(e.target.value);
   };
-
-  const [pwValue, setPwValue] = useState('');
   const saveUserPw = e => {
     setPwValue(e.target.value);
   };
 
-  // const enter = e => {
-  //   if (e.code == 'Enter') {
-  //     goToMain();
-  //   }
-  // };
+  const goToMain = () => {
+    fetch('http://10.58.52.227:3000/auth/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: idValue,
+        password: pwValue,
+      }),
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('통신실패!');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        if (data.accessToken) {
+          localStorage.setItem('token', data.accessToken);
+          alert('로그인 성공');
+          navigate('/MainKhj');
+        } else if (data.message === 'INVALIDU_USER_ID') {
+          alert('아이디 혹은 비밀번호를 확인 해 주세요');
+        }
+      });
+  };
 
   return (
     <div className="container">

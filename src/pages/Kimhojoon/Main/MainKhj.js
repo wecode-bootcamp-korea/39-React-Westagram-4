@@ -1,7 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainKhj.scss';
 
 export default function MainKhj() {
+  const [commentArray, setCommentArray] = useState([]); //새로운 초기값 빈배열
+  const [commentValue, setCommentValue] = useState('');
+
+  const saveComment = e => {
+    setCommentValue(e.target.value);
+  };
+  // const newComment = () => {
+  //   const newArray = [...commentArray];{
+  //   //새로운 배열을 복사하고 복사한 배열에다가 value값을 계속 push 해줘서 넣음.
+  //   //넣은 것들을 댓글창에다가 하나씩 넣어준다.
+  //   //map으로 넣는법은?
+
+  //   newArray.push(commentValue);
+  //   setCommentArray(newArray);
+  // };
+
+  // const inputComment = () => {
+  //   newArray.map((comment, idx) => {
+  //     return <div key={idx}>{comment}</div>;
+  //   })
+  // }
+
+  const inputComment = () => {
+    setCommentArray([...commentArray, commentValue]);
+    setCommentValue('');
+  };
+
+  // const commentDelete = targetId => {
+  //   // const newComment = commentArray.filter(e => e.id !== targetId);
+  //   setCommentArray(commentArray.filter(Comment()=>{
+  //     return Comment.targetId !== targetId;
+  //   }));
+  // };
+
+  /*{ {commentArray.map((comment, idx) => (
+                <div className="ment1" key={idx}>
+                  {comment}
+                  <button className="commentDelete" >x</button>
+                  <button className="commentChange" >o</button>
+                </div> }*/
+
   return (
     <div className="Maincontainer">
       <div className="navbox">
@@ -10,7 +51,6 @@ export default function MainKhj() {
             <img
               className="logo"
               src="/images/Kimhojoon/instagram (1).png"
-              s
               alt="로고이미지"
             />
             <h1 className="Mainwestagram">Westagram</h1>
@@ -101,16 +141,44 @@ export default function MainKhj() {
               </div>
               <p>hzoxjcnv님 외 10명이 좋아합니다.</p>
             </div>
-            <div className="ment1">hzoxjcnv 위워크에서 진행한 탁구 클래스</div>
-            <div className="ment2">hzoxjcnv 위워크에서 진행한 탁구 클래스</div>
+            <div className="mentcontainer">
+              <div className="ment1">
+                hzoxjcnv 위워크에서 진행한 탁구 클래스
+              </div>
+              <div className="ment2">
+                hzoxjcnv 위워크에서 진행한 탁구 클래스
+              </div>
+              {commentArray.map((comment, idx) => (
+                <div className="ment1" key={idx}>
+                  {comment}
+                  <button
+                    data-index={idx}
+                    onClick={e => {
+                      console.log(e.target.dataset.index);
+                    }}
+                  >
+                    x
+                  </button>
+                  <button>o</button>
+                </div>
+              ))}
+            </div>
             <div className="comment">
               <input
                 className="commentinput"
                 type="text"
                 placeholder="댓글달기..."
+                onChange={saveComment}
+                value={commentValue}
               />
 
-              <button className="commentbtn">게시</button>
+              <button
+                className="commentbtn"
+                disabled={commentValue.length > 0 ? false : true}
+                onClick={inputComment}
+              >
+                게시
+              </button>
             </div>
           </div>
         </section>

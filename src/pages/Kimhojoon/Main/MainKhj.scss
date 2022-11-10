@@ -99,6 +99,7 @@ html {
   }
 
   .profileimg1 {
+    //div//
     width: 32px;
     height: 32px;
     overflow: hidden;
@@ -107,6 +108,7 @@ html {
   }
 
   .realimg1 {
+    //진짜 이미지//
     @include objectFit;
   }
 
@@ -126,6 +128,7 @@ html {
   }
 
   .iconbox {
+    position: relative;
     width: 100%;
     height: 50px;
     @include mainFlex(none, center);
@@ -172,6 +175,10 @@ html {
     @include objectFit;
   }
 
+  .mentcontainer {
+    overflow: scroll;
+  }
+
   .ment1,
   .ment2 {
     margin-left: 8px;
@@ -205,7 +212,12 @@ html {
     border: none;
     color: skyblue;
     font-size: 15px;
-    background-color: white;
+    background-color: #0095f6;
+  }
+  button {
+    &:disabled {
+      background-color: #c4e1fb;
+    }
   }
 }
 
