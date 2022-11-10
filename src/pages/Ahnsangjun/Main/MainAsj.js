@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 import './MainAsj.scss';
 import Comment from './Comment';
+import CommentList from '../CommentList';
 
 function MainAsj() {
   const [commentValue, setCommentValue] = useState('');
 
-  const [comments, setComments] = useState([{ title: '댓글' }]);
+  const [commentList, setCommentList] = useState([]);
 
-  const renderComments = comments.map(comment => {
-    return <Comment comment={comment} key={comment.value} />;
-  });
-
-  const addComment = e => {
-    e.preventDefault();
-
-    setComments([
-      ...comments,
-      {
-        title: commentValue,
-      },
-    ]);
+  const handleClickBtn = () => {
+    const pushedComments = [...commentList, commentValue];
+    setCommentList(pushedComments);
     setCommentValue('');
   };
+
+  // const [inputValue, setInputValue] = useState('');
+  // const [commentList, setCommentList] = useState({});
+  // const addItem = () => {
+  //   setCommentList([...commentList, inputValue]);
+  //   setInputValue('');
+  // };
 
   return (
     <>
@@ -106,28 +104,54 @@ function MainAsj() {
                   <div className="contents__id">dave_ahn93</div>
                   <div className="contents__content">달</div>
                 </div>
+
+                {/* 댓글 */}
+
+                {/* <div className="comment">
+                  <input
+                    value={inputValue}
+                    type="text"
+                    onChange={e => setInputValue(e.target.value)}
+                  />
+                  <button onClick={addItem}> 댓글 추가 </button>
+
+                  <CommentList commentList={commentList} />
+                </div> */}
+
                 <div className="comments" />
                 <div className="time">1 HOUR AGO</div>
+                {/* 댓글 리스트 */}
                 <ul className="comments__list" />
+                <br />
+                <ul className="commentBox">
+                  {commentList.map((commentValue, index) => {
+                    return <Comment comment={commentValue} key={index} />;
+                  })}
+                </ul>
 
-                {/* <!-- 댓글창 --> */}
+                <div className="comments" />
                 <div className="write">
                   <div className="inner">
                     <i className="fa-regular fa-face-smile" />
+                    <div className="comment__form">
+                      <form onSubmit={event => event.preventDefault()}>
+                        <input
+                          type="text"
+                          value={commentValue}
+                          className="write__input"
+                          placeholder="Add a comment..."
+                          onChange={e => setCommentValue(e.target.value)}
+                        />
 
-                    <form onSubmit={addComment} className="comment__form">
-                      <input
-                        type="text"
-                        value={commentValue}
-                        className="write__input"
-                        placeholder="Add a comment..."
-                        onChange={e => setCommentValue(e.target.value)}
-                      />
-                      <button type="submit" className="post">
-                        post
-                      </button>
-                    </form>
-                    {renderComments}
+                        <button
+                          onClick={handleClickBtn}
+                          type="submit"
+                          className="post"
+                        >
+                          post
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>

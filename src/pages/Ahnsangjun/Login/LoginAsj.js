@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './LoginAsj.scss';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginAsj() {
-  const [id, getId] = useState('');
-  const [pw, getPw] = useState('');
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const idValue = e => {
-    getId(e.target.value);
+    setId(e.target.value);
   };
 
   const pwValue = e => {
-    getPw(e.target.value);
+    setPassword(e.target.value);
   };
 
-  let loginIdPw = id.indexOf('@') !== -1 && pw.length >= '5';
+  const [getData, setGetData] = useState('');
+  console.log(getData);
+
+  const loginSuccess = e => {
+    fetch('http://10.58.52.147:3000/auth/signin', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({ email: id, password: password }),
+    })
+      .then(response => response.json()) //요청
+      .then(data => {
+        setGetData(data); //응답
+        localStorage.setItem('idKey', JSON.stringify(data));
+      });
+    navigate('/mainasj');
+  };
+
+  let loginIdPw = id.indexOf('@') !== -1 && password.length >= '5';
+
   return (
     <div className="login-page">
       <div className="main_login_box">
@@ -41,14 +61,13 @@ export default function LoginAsj() {
           </div>
           <div className="login_box_a">
             <label htmlFor="login_button" />
-            <Link to="MainAsj">
-              <button
-                className={loginIdPw ? 'rightValue' : 'wrongValue'}
-                disabled={loginIdPw !== true}
-              >
-                로그인
-              </button>
-            </Link>
+            <button
+              onClick={loginSuccess}
+              className={loginIdPw ? 'rightValue' : 'wrongValue'}
+              disabled={loginIdPw !== true}
+            >
+              로그인
+            </button>
           </div>
           <div className="facebook_login">
             <span>Facebook으로 로그인</span>
