@@ -1,11 +1,135 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginWsm.scss';
 
-export default function LoginWsm() {
+const LoginWsm = () => {
+  const navigate = useNavigate();
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  const active = id.includes('@') && pw.length >= 5;
+
+  const saveUserId = e => {
+    setId(e.target.value);
+  };
+  const saveUserPw = e => {
+    setPw(e.target.value);
+  };
+
+  const goToMain = () => {
+    if (active) {
+      fetch('http://10.58.52.227:3000/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          email: id,
+          password: pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.accessToken) {
+            localStorage.setItem('token', data.accessToken);
+            alert('로그인 성공');
+            navigate('/mainwsm');
+          } else if (data.accessToken === 'INVALIDU_USER_ID') {
+            alert('아이디 혹은 비밀번호를 확인 해 주세요');
+          }
+        });
+    }
+  };
+
   return (
-    <div>
-      <h1>Hello</h1>
-      Login_wsm
+    <div className="login-wrap">
+      <header>
+        <div className="main">
+          <div className="logo">
+            <h1>Westagram</h1>
+          </div>
+          <div className="loginbar">
+            <form className="formbox">
+              <input
+                className="login-1"
+                type="text"
+                placeholder="전화번호, 사용자 이름 또는 이메일"
+                onChange={saveUserId}
+                required
+              />
+              <input
+                className="login-2"
+                type="password"
+                placeholder="비밀번호"
+                onChange={saveUserPw}
+                required
+              />
+              <button
+                className={active ? 'activeloginbtn' : 'loginbtn'}
+                onClick={goToMain}
+                type="button"
+                name=""
+                disabled={!active}
+              >
+                로그인
+              </button>
+            </form>
+            <div className="line">
+              {/* line div */}
+              <div className="line-1" />
+              <h5>또는</h5>
+              <div className="line-2" />
+            </div>
+            <div className="login-to-fb">
+              {/* login-ti-fb div */}
+              <a href="https://www.facebook.com/">
+                <span>
+                  <img
+                    src="/images/Woosukmin/free-icon-facebook-174848.png"
+                    width="15px"
+                    height="15px"
+                    alt="페이스북 아이콘"
+                  />
+                </span>
+                Facebook으로 로그인
+              </a>
+            </div>
+            <div className="pass">
+              {/* pass div */}
+              <a href="https://www.instagram.com/accounts/password/reset/">
+                비밀번호를 잊으셨나요?
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="join">
+          {/* join div */}
+          <p>
+            계정이 없으신가요?{' '}
+            <span>
+              <a href="https://www.instagram.com/accounts/emailsignup/">
+                가입하기
+              </a>
+            </span>
+          </p>
+        </div>
+        <div className="doun">
+          {/* doun div  */}
+          <p>앱을 다운로드하세요.</p>
+          <a href="https://www.apple.com/kr/app-store/">
+            <img
+              src="https://static.cdninstagram.com/rsrc.php/v3/yi/r/cWx_hQBPmbo.png"
+              alt="App Store에서 다운로드"
+            />
+          </a>
+          <a href="https://play.google.com/store/apps?utm_source=apac_med&utm_medium=hasem&utm_content=Oct0121&utm_campaign=Evergreen&pcampaignid=MKT-EDR-apac-kr-1003227-med-hasem-ap-Evergreen-Oct0121-Text_Search_SKWS-SKWS%7cONSEM_kwid_43700058444565162_creativeid_477138308607_device_c&gclid=CjwKCAjw79iaBhAJEiwAPYwoCBcgVPCJDvHn6wBWB1Wse88iOO3rzQBLX2zx2bJcyrhAdE9ai0gpyRoC4x8QAvD_BwE&gclsrc=aw.ds">
+            <img
+              src="https://static.cdninstagram.com/rsrc.php/v3/ye/r/UtJtFmFLCiD.png"
+              alt="Google Play에서 다운로드"
+            />
+          </a>
+        </div>
+      </header>
     </div>
   );
-}
+};
+export default LoginWsm;
