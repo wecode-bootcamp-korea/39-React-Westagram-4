@@ -14,6 +14,8 @@ function MainAsj() {
     setCommentValue('');
   };
 
+  let btnLight = commentValue.length >= '1';
+
   // const [inputValue, setInputValue] = useState('');
   // const [commentList, setCommentList] = useState({});
   // const addItem = () => {
@@ -123,11 +125,15 @@ function MainAsj() {
                 {/* 댓글 리스트 */}
                 <ul className="comments__list" />
                 <br />
-                <ul className="commentBox">
-                  {commentList.map((commentValue, index) => {
-                    return <Comment comment={commentValue} key={index} />;
-                  })}
-                </ul>
+
+                {/* 댓글 */}
+                <div className="commentBox">
+                  <ul>
+                    {commentList.map((commentValue, index) => {
+                      return <Comment comment={commentValue} key={index} />;
+                    })}
+                  </ul>
+                </div>
 
                 <div className="comments" />
                 <div className="write">
@@ -146,7 +152,7 @@ function MainAsj() {
                         <button
                           onClick={handleClickBtn}
                           type="submit"
-                          className="post"
+                          className={btnLight ? 'rightBtn' : 'wrongBtn'}
                         >
                           post
                         </button>
