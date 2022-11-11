@@ -1,0 +1,171 @@
+@mixin flexSet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  background-color: #fafafa;
+  text-decoration: none;
+}
+
+/*전체 섹션*/
+.section {
+  @include flexSet;
+  width: 350px;
+  padding: 10px 0;
+  background-color: #ffffff;
+}
+
+/*부모 로그인 페이지*/
+.login-page {
+  @include flexSet;
+  /*화면 창 줄여도 메인 박스 변화 없음*/
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 60px;
+  background-color: #fafafa;
+
+  /*1번째 자식 Westagram Logo */
+  #westagram_text {
+    margin: auto;
+    background-color: #ffffff;
+    font-family: 'Lobster', cursive;
+    font-size: 60px;
+    font-weight: 800;
+  }
+
+  /*1번째 자식 : 메인 로그인 박스*/
+  .main_login_box {
+    @include flexSet;
+    padding-bottom: 15px;
+    border: 1px solid #dbdbdb;
+    background-color: #ffffff;
+
+    /*2번째 자식 : 로고 박스*/
+    .logo_box {
+      margin: 15px 0 30px 0;
+      background-color: #ffffff;
+    }
+
+    /*2번째 자식 : 로그인 전체 박스*/
+    .login_box {
+      @include flexSet;
+      width: 348px;
+      height: 180px;
+      background-color: #ffffff;
+
+      /*3번째 자식 : 로그인 정보 박스*/
+      .login_box_a {
+        height: 40px;
+        background-color: ffffff;
+
+        /*4번째 자식 : 사인 업 박스*/
+        .signUpBox {
+          @include flexSet;
+          align-content: space-around;
+          width: 258px;
+          height: 36px;
+          margin: 0 0 0 0;
+          margin-bottom: 10px;
+          border: solid 0.1vh black;
+        }
+
+        /*4번째 자식 : 로그인 버튼*/
+        .rightValue {
+          width: 268px;
+          height: 30px;
+          margin: 8px 40px;
+          border: 0;
+          border-top: 30px;
+          border-radius: 4px;
+          background-color: #0096f6;
+          color: black;
+          text-decoration: none;
+        }
+        .wrongValue {
+          width: 268px;
+          height: 30px;
+          margin: 8px 40px;
+          border: 0;
+          border-top: 30px;
+          border-radius: 4px;
+          background-color: #c3dffd;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/*4번째 자식 : 로그인 정보 입력 박스*/
+.login_button {
+  @include flexSet;
+  width: 258px;
+  height: 36px;
+}
+
+/*or 박스*/
+.or_box {
+  margin-top: 20px;
+}
+
+/*facebook_login*/
+.facebook_login {
+  margin-top: 20px;
+  background-color: #ffffff;
+  color: #385185;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/*2번째 자식 : 비밀번호 찾기 박스*/
+.find_password {
+  margin: 5px 0 0 0;
+  background-color: #ffffff;
+  font-size: 12px;
+  text-decoration-color: #3c5f88;
+}
+
+/*1번째 자식 : 회원가입 박스*/
+.sign_in_box {
+  @include flexSet;
+  width: 350px;
+  height: 63px;
+  margin-top: 10px;
+  border: 1px solid #dbdbdb;
+  background-color: #ffffff;
+}
+
+/*2번재 자식 : 회원가입 박스 문구*/
+.sign_in_box_word {
+  @include flexSet;
+  margin-top: 10px;
+  background-color: #ffffff;
+  font-size: 14px;
+}
+
+/*1번째 자식 : 다운로드 전체 박스*/
+.download_box {
+  @include flexSet;
+  margin: 30px 0 30px 0;
+  background-color: #fafafa;
+}
+
+/*2번째 자식 : 다운로드 메세지 박스*/
+.download_word {
+  @include flexSet;
+  width: 310px;
+  height: 30px;
+  margin: 10px 20px;
+}
+
+/*2번째 자식 : 다운로드 버튼 박스*/
+.app_store {
+  width: 136px;
+  height: 40px;
+}
