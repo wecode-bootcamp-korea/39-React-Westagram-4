@@ -2,24 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginWsm.scss';
 
-export default function LoginWsm() {
+const LoginWsm = () => {
   const navigate = useNavigate();
-  const goToMain = () => {
-    if (id.includes('@') && pw.length >= 5) {
-      navigate('/mainwsm');
-    } else {
-      alert('가입된 회원이 아닙니다. 회원가입을 먼저 해주세요.');
-    }
-  };
-  const [active, setActive] = useState(false);
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-
-  const ActiveIsPassedLogin = () => {
-    return id.includes('@') && pw.length >= 5
-      ? setActive(true)
-      : setActive(false);
-  };
+  const active = id.includes('@') && pw.length >= 5;
 
   const saveUserId = e => {
     setId(e.target.value);
@@ -27,6 +14,32 @@ export default function LoginWsm() {
   const saveUserPw = e => {
     setPw(e.target.value);
   };
+
+  const goToMain = () => {
+    if (active) {
+      fetch('http://10.58.52.227:3000/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({
+          email: id,
+          password: pw,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.accessToken) {
+            localStorage.setItem('token', data.accessToken);
+            alert('로그인 성공');
+            navigate('/mainwsm');
+          } else if (data.accessToken === 'INVALIDU_USER_ID') {
+            alert('아이디 혹은 비밀번호를 확인 해 주세요');
+          }
+        });
+    }
+  };
+
   return (
     <div className="login-wrap">
       <header>
@@ -40,7 +53,6 @@ export default function LoginWsm() {
                 className="login-1"
                 type="text"
                 placeholder="전화번호, 사용자 이름 또는 이메일"
-                onKeyUp={ActiveIsPassedLogin}
                 onChange={saveUserId}
                 required
               />
@@ -48,7 +60,6 @@ export default function LoginWsm() {
                 className="login-2"
                 type="password"
                 placeholder="비밀번호"
-                onKeyUp={ActiveIsPassedLogin}
                 onChange={saveUserPw}
                 required
               />
@@ -57,7 +68,7 @@ export default function LoginWsm() {
                 onClick={goToMain}
                 type="button"
                 name=""
-                disabled={id === '' || pw === '' ? true : false}
+                disabled={!active}
               >
                 로그인
               </button>
@@ -120,4 +131,5 @@ export default function LoginWsm() {
       </header>
     </div>
   );
-}
+};
+export default LoginWsm;
