@@ -1,0 +1,83 @@
+/* font */
+@font-face {
+  font-family: 'Lobster-Regular';
+  font-weight: 400;
+  src: url(../../../assets/Parkmoonyoung/font/Lobster-Regular.ttf)
+    format('truetype');
+}
+/* imgBox */
+.imgBox img {
+  width: 100%;
+}
+
+/* loiginFormBox */
+.loginFormBox {
+  width: 100%;
+  height: 35px;
+  & + .loginFormBox {
+    margin-top: 5px;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  input::placeholder {
+    color: #999;
+  }
+}
+
+/* login */
+.loginWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: #fafafa;
+  a {
+    text-decoration: none;
+  }
+}
+.loginArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  height: 380px;
+  padding: 20px 40px 10px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  text-align: center;
+  .inputDataArea {
+    margin-top: 35px;
+  }
+  .inputDataArea .btnLogin:disabled {
+    opacity: 0.5;
+  }
+  .inputDataArea .btnLogin {
+    width: 100%;
+    height: 30px;
+    margin-top: 15px;
+    border: 1px solid #0095f6;
+    border-radius: 4px;
+    background: #0095f6;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+  }
+  .forgotPw {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #043667;
+    font-weight: 700;
+  }
+}

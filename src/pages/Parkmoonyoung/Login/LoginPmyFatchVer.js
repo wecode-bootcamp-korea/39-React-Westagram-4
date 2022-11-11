@@ -28,10 +28,38 @@ function HeadingTag1() {
 }
 
 function InputDataArea() {
+  const navMain = useNavigate();
+
+  function fetchFn() {
+    fetch('http://10.58.52.230:3008/auth/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify({
+        email: isIdValue,
+        password: isPwValue,
+      }),
+    })
+      .then(response => {
+        console.log(response);
+        if (response.status != 200) {
+          throw new Error('error');
+          alert('로그인 실패');
+        }
+        return response.json();
+      })
+      .catch(err => {
+        console.log(err);
+        alert('로그인 실패');
+      })
+      .then(data => {
+        localStorage.setItem('token', data.accessToken);
+        return navMain('/MainPmy');
+      });
+  }
+
   let [isDisabled, setDisabled] = useState('disabled');
   let [isIdValue, setIdValue] = useState('');
   let [isPwValue, setPwValue] = useState('');
-  let [isValStatus, setValstatus] = useState(false);
 
   function saveUserId(e) {
     setIdValue(e.target.value);
@@ -43,29 +71,14 @@ function InputDataArea() {
     return isPwValue;
   }
 
-  useEffect(validCheck, [isIdValue, isPwValue]);
-
-  function validCheck() {
-    //isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5
-    //  ? setDisabled()
-    //  : setDisabled('disabled');
-
-    if (isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5) {
-      setDisabled();
-      setValstatus(true);
-    } else {
-      setDisabled('disabled');
-      setValstatus(false);
-    }
-  }
-
-  const navMain = useNavigate();
-
-  function loginPass(e) {
-    if (e.keyCode === 13 || e.target.className === 'btnLogin') {
-      isValStatus ? navMain('/MainPmy') : alert('error');
-    }
-  }
+  useEffect(
+    function () {
+      isIdValue.indexOf(`@`) > -1 && isPwValue.length > 5
+        ? setDisabled()
+        : setDisabled('disabled');
+    },
+    [isIdValue, isPwValue]
+  );
 
   return (
     <div className="inputDataArea">
@@ -83,10 +96,9 @@ function InputDataArea() {
           type="password"
           placeholder="비밀번호"
           onChange={saveUserPw}
-          onKeyDown={loginPass}
         />
       </div>
-      <button className="btnLogin" disabled={isDisabled} onClick={loginPass}>
+      <button className="btnLogin" disabled={isDisabled} onClick={fetchFn}>
         로그인
       </button>
     </div>

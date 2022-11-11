@@ -11,11 +11,15 @@ import LoginKsj from './pages/Kusujeong/Login/LoginKsj';
 import LoginPmy from './pages/Parkmoonyoung/Login/LoginPmy';
 import LoginWsm from './pages/Woosukmin/Login/LoginWsm';
 
+import Signup from './pages/Parkmoonyoung/Signup/Signup';
+import Practice from './pages/Parkmoonyoung/Practice/Practice';
+import UserData from './pages/Parkmoonyoung/UserData/UserData';
+
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginAsj />} />
+        <Route path="/loginasj" element={<LoginAsj />} />
         <Route path="/mainasj" element={<MainAsj />} />
         <Route path="/loginkhj" element={<LoginKhj />} />
         <Route path="/mainkhj" element={<MainKhj />} />
@@ -25,6 +29,10 @@ function Router() {
         <Route path="/mainpmy" element={<MainPmy />} />
         <Route path="/loginwsm" element={<LoginWsm />} />
         <Route path="/mainwsm" element={<MainWsm />} />
+
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/practice" element={<Practice />} />
+        <Route path="/userdata" element={<UserData />} />
       </Routes>
     </BrowserRouter>
   );

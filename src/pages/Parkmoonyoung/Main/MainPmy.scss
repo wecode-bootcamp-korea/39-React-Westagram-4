@@ -1,0 +1,688 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  min-width: 1300px;
+  height: 100%;
+  padding: 100px 0;
+  background: #fafafa;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+  li {
+    list-style: none;
+  }
+  button,
+  a {
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  input::placeholder {
+    color: #666;
+  }
+}
+
+/* .navWrap */
+.navWrap {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1300px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .inner .searchArea {
+    position: relative;
+    width: 280px;
+    height: 35px;
+    background: #fafafa;
+  }
+  .inner .searchArea .mainSearch {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: transparent;
+  }
+  .inner .searchArea .mainSearch + .placeholderBox {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    padding-left: 14px;
+    transform: translate(-50%, -50%);
+    color: #666;
+  }
+  .inner .searchArea .mainSearch + .placeholderBox:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-search.png)
+      no-repeat center/contain;
+  }
+  .inner .searchArea .mainSearch:focus + .placeholderBox {
+    display: none;
+  }
+  .inner .searchArea .searchResultBox {
+    display: none;
+    max-height: 300px;
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .inner .searchArea .searchResultBox.active {
+    display: block;
+  }
+  .inner .searchArea .searchResultBox > ul > li + li {
+    border-top: 1px solid #ddd;
+  }
+  .inner .searchArea .searchResultBox > ul > li {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 15px 10px;
+    background: #fff;
+  }
+  .inner .searchArea .searchResultBox > ul > li:hover {
+    background: #ddd;
+  }
+  .inner .searchArea .searchResultBox > ul > li .searchId {
+    font-weight: 700;
+  }
+  .inner .utilMenuArea {
+    display: flex;
+  }
+  .inner .utilMenuArea .utilBox {
+    width: 30px;
+    height: 30px;
+  }
+  .inner .utilMenuArea .utilBox + .utilBox {
+    margin-left: 12px;
+  }
+  .inner .utilMenuArea .utilBox .btn {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .inner .utilMenuArea .utilBox .btn.active {
+    position: relative;
+  }
+  .inner .utilMenuArea .utilBox .btn.active:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 5px;
+    height: 4px;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    background: red;
+  }
+  .inner .utilMenuArea .utilBox .btn.btnUtilSearch {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-util-explore.png)
+      no-repeat center/contain;
+  }
+  .inner .utilMenuArea .utilBox .btn.btnUtilHeart {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-util-heart.png)
+      no-repeat center/contain;
+  }
+  .inner .utilMenuArea .utilBox .btn.btnUtilMypage {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-util-profile.png)
+      no-repeat center/contain;
+  }
+  .inner .utilMenuArea .utilBox .btn.btnUtilProfile {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-default-profile.jpg)
+      no-repeat center/contain;
+  }
+  .inner .utilMenuArea .utilBox.profileBox {
+    position: relative;
+  }
+  .inner .utilMenuArea .utilBox.profileBox .profileMenu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translateX(-50%);
+    background: pink;
+  }
+  .inner .utilMenuArea .utilBox.profileBox .profileMenu.active {
+    display: block;
+  }
+}
+
+.mainWrap {
+  .feedsWrap {
+    display: flex;
+    justify-content: center;
+    width: 1300px;
+    margin: 0 auto;
+    padding: 75px 25px 0 25px;
+  }
+  .feedsWrap .feedsArea {
+    & + .feedsArea {
+      margin-top: 20px;
+    }
+    width: 820px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .feedsWrap .feedsArea .feedsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 20px;
+    background: #fff;
+  }
+  .feedsWrap .feedsArea .feedsHeader .profileBox {
+    display: flex;
+    align-items: center;
+  }
+  .feedsWrap .feedsArea .feedsHeader .profileBox .imgBox {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+  }
+  .feedsWrap .feedsArea .feedsHeader .profileBox .nickName {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .feedsWrap .feedsArea .feedsHeader .btn.detail {
+    width: 30px;
+    height: 30px;
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-more.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsImgArea {
+    width: 820px;
+    height: 820px;
+    overflow: hidden;
+    background: #ddd;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsImgArea > ul {
+    width: 100%;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsImgArea > ul > li {
+    position: relative;
+    width: 100%;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsImgArea > ul > li > img {
+    width: 100%;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea {
+    padding: 0 20px 10px;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .feedsBtnArea {
+    position: relative;
+    padding: 20px 0;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn
+    + .btn {
+    margin-left: 15px;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .feedsBtnArea .btn {
+    width: 35px;
+    height: 35px;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn.heart {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-heart-off.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn.heart.active {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-heart-on.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn.reple {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-bubble-chat.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn.share {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-share.png)
+      no-repeat top/32px;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .feedsBtnArea
+    .btn.favorite {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-markbook.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleTotal {
+    display: flex;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleTotal .imgBox {
+    width: 26px;
+    height: 24px;
+    margin-right: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleTotal
+    .imgBox
+    img {
+    height: 100%;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleTotal
+    .totalTxt
+    span {
+    font-weight: 700;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .myReple {
+    margin-top: 8px;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .myReple .myName {
+    margin-right: 4px;
+    font-weight: 700;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .myReple .btn.more {
+    margin-left: 4px;
+    border: 0;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList {
+    min-height: 40px;
+    max-height: 160px;
+    padding: 2px 0;
+    overflow-y: auto;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li + li {
+    margin-top: 2px;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li {
+    position: relative;
+    padding-right: 20px;
+    &.hidden {
+      display: none;
+    }
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleList
+    > li
+    .nickName {
+    font-weight: 700;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .feedsUtilArea .repleList > li .txt {
+    margin-left: 4px;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleList
+    > li
+    .heart {
+    position: absolute;
+    top: 2px;
+    right: 30px;
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-heart-off.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleList
+    > li
+    .heart.on {
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-heart-on.png)
+      no-repeat center/contain;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleList
+    > li
+    .delete {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background: url(../../../assets/Parkmoonyoung/images/icon/icon-delete.png)
+      no-repeat center/10px;
+  }
+  .feedsWrap
+    .feedsArea
+    .feedsContentsArea
+    .feedsUtilArea
+    .repleList
+    > li
+    .prevTime {
+    color: #666;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .addRepleBox {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #ddd;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .addRepleBox input {
+    display: block;
+    width: calc(100% - 70px);
+    padding: 24px 20px;
+    border: 0;
+    outline: 0;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .addRepleBox .post {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    border: 0;
+    outline: 0;
+    opacity: 0.5;
+    color: #043667;
+    font-weight: 700;
+  }
+  .feedsWrap .feedsArea .feedsContentsArea .addRepleBox .post.active {
+    opacity: 1;
+  }
+  .feedsWrap .feedsAsideArea {
+    width: 390px;
+    margin-left: 40px;
+  }
+  .feedsWrap .feedsAsideArea .mainProfileArea {
+    display: flex;
+    align-items: center;
+  }
+  .feedsWrap .feedsAsideArea .mainProfileArea .imgBox {
+    width: 68px;
+    height: 68px;
+    margin-right: 15px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #ddd;
+  }
+  .feedsWrap .feedsAsideArea .mainProfileArea .imgBox img {
+    width: 100%;
+  }
+  .feedsWrap .feedsAsideArea .mainProfileArea .dataBox .tit {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+  .feedsWrap .feedsAsideArea .mainProfileArea .dataBox span {
+    color: #666;
+  }
+  .feedsWrap .feedsAsideArea .nickDataArea + .nickDataArea {
+    margin-top: 16px;
+  }
+  .feedsWrap .feedsAsideArea .nickDataArea {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea {
+    margin-top: 20px;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea > ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea > ul > li {
+    position: relative;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea > ul > li + li {
+    margin-left: 4px;
+    padding-left: 4px;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea > ul > li + li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: 2px;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 50%;
+    background: #aaa;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea > ul > li a {
+    color: #aaa;
+  }
+  .feedsWrap .feedsAsideArea .dataInfoArea .copyRight {
+    margin-top: 20px;
+    color: #aaa;
+  }
+}
+
+/* 로고 */
+.logo {
+  display: inline-block;
+}
+.logo a {
+  color: #000;
+  font-family: 'Lobster-Regular';
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+.logo.addIcon a {
+  position: relative;
+  padding-left: 70px;
+}
+.logo.addIcon a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  background: url(../../../assets/Parkmoonyoung/images/icon/logo.png) no-repeat
+    center/contain;
+}
+.logo.addIcon a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  width: 2px;
+  height: 36px;
+  margin-top: -18px;
+  background: #000;
+}
+.logo.addIcon a {
+  font-size: 36px;
+  letter-spacing: 0;
+}
+
+/* .nickDataArea */
+.nickDataArea.story {
+  height: 295px;
+  margin-top: 20px;
+}
+.nickDataArea.suggestion {
+  height: 255px;
+}
+.nickDataArea.suggestion .userDataBox .userData {
+  padding-right: 50px;
+}
+.nickDataArea.suggestion .userDataBox .userData .btn.follow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: #0095f6;
+  font-weight: 700;
+}
+
+.nickDataArea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.nickDataArea .nickDataHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.nickDataArea .nickDataHeader em {
+  color: #666;
+  font-weight: 700;
+}
+.nickDataArea .nickDataHeader .allView {
+  font-weight: 700;
+}
+.nickDataArea .nickList {
+  height: calc(100% - 58px);
+  padding: 0 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.nickDataArea .nickList > li + li {
+  margin-top: 10px;
+}
+
+/* userDataBox */
+.userDataBox {
+  position: relative;
+  height: 58px;
+  padding-left: 70px;
+}
+.userDataBox .imgBox {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  padding: 2px;
+  transform: translateY(-50%);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(45deg, slateblue, coral) border-box;
+}
+.userDataBox .imgBox img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ddd;
+}
+.userDataBox .userData {
+  height: 100%;
+  padding-top: 8px;
+}
+.userDataBox .userData .userNickName {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.userDataBox .userData .time {
+  color: #666;
+}
+.userDataBox .userData .txt {
+  display: inline-block;
+  width: 99%;
+  overflow: hidden;
+  color: #666;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .feedsAsideArea {
+    display: none;
+  }
+  .wrap {
+    min-width: 900px;
+  }
+  .mainWrap .feedsWrap {
+    width: auto;
+  }
+  .navWrap .inner {
+    width: unset;
+  }
+}
