@@ -8,15 +8,6 @@ export default function MainKhj() {
   const saveComment = e => {
     setCommentValue(e.target.value);
   };
-  // const newComment = () => {
-  //   const newArray = [...commentArray];{
-  //   //새로운 배열을 복사하고 복사한 배열에다가 value값을 계속 push 해줘서 넣음.
-  //   //넣은 것들을 댓글창에다가 하나씩 넣어준다.
-  //   //map으로 넣는법은?
-
-  //   newArray.push(commentValue);
-  //   setCommentArray(newArray);
-  // };
 
   // const inputComment = () => {
   //   newArray.map((comment, idx) => {
@@ -29,12 +20,19 @@ export default function MainKhj() {
     setCommentValue('');
   };
 
-  // const commentDelete = targetId => {
-  //   // const newComment = commentArray.filter(e => e.id !== targetId);
-  //   setCommentArray(commentArray.filter(Comment()=>{
-  //     return Comment.targetId !== targetId;
-  //   }));
-  // };
+  const commentDelete = e => {
+    const targetId = e.target.dataset.index;
+    // console.log(targetId);
+    // let copy = [...commentArray];
+    // copy.splice(targetId, 1);
+    // setCommentArray(copy);
+    setCommentArray(
+      commentArray.filter(comment => {
+        return comment !== commentArray[targetId];
+      })
+    );
+  };
+  // console.log(commentArray);
 
   /*{ {commentArray.map((comment, idx) => (
                 <div className="ment1" key={idx}>
@@ -151,12 +149,7 @@ export default function MainKhj() {
               {commentArray.map((comment, idx) => (
                 <div className="ment1" key={idx}>
                   {comment}
-                  <button
-                    data-index={idx}
-                    onClick={e => {
-                      console.log(e.target.dataset.index);
-                    }}
-                  >
+                  <button data-index={idx} onClick={commentDelete}>
                     x
                   </button>
                   <button>o</button>
