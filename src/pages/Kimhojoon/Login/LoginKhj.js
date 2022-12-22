@@ -10,9 +10,14 @@ export default function LoginKhj() {
   const saveUserId = e => {
     setIdValue(e.target.value);
   };
+  console.log(idValue);
   const saveUserPw = e => {
     setPwValue(e.target.value);
   };
+
+  // const goToOrderList = () => {
+  //   navigate(/'/MainKhj')
+  // }
 
   const goToMain = () => {
     fetch('http://10.58.52.227:3000/auth/signin', {
@@ -37,7 +42,7 @@ export default function LoginKhj() {
           localStorage.setItem('token', data.accessToken);
           alert('로그인 성공');
           navigate('/MainKhj');
-        } else if (data.message === 'INVALIDU_USER_ID') {
+        } else if (data.message === 'INVALID_USER_ID') {
           alert('아이디 혹은 비밀번호를 확인 해 주세요');
         }
       });

@@ -20,26 +20,26 @@ export default function MainKhj() {
     setCommentValue('');
   };
 
-  const commentDelete = e => {
-    const targetId = e.target.dataset.index;
-    // console.log(targetId);
-    // let copy = [...commentArray];
-    // copy.splice(targetId, 1);
-    // setCommentArray(copy);
-    setCommentArray(
-      commentArray.filter(comment => {
-        return comment !== commentArray[targetId];
-      })
-    );
-  };
-  // console.log(commentArray);
+  // const commentDelete = idx => {
+  // const targetId = e.target.dataset.index;
+  // console.log(targetId);
+  // let copy = [...commentArray];
+  // copy.splice(targetId, 1);
+  // setCommentArray(copy);
 
-  /*{ {commentArray.map((comment, idx) => (
-                <div className="ment1" key={idx}>
-                  {comment}
-                  <button className="commentDelete" >x</button>
-                  <button className="commentChange" >o</button>
-                </div> }*/
+  // setCommentArray(
+  //   commentArray.filter((_, index) => {
+  //     return idx !== index;
+  //   })
+  // );
+
+  //   setCommentArray(commentArray.filter((_, index) => idx !== index));
+  // };
+
+  const commentDelete = e => {
+    const targetId = Number(e.target.dataset.index);
+    setCommentArray(commentArray.filter((_, index) => index !== targetId));
+  };
 
   return (
     <div className="Maincontainer">
@@ -152,6 +152,7 @@ export default function MainKhj() {
                   <button data-index={idx} onClick={commentDelete}>
                     x
                   </button>
+                  {/* <button onClick={() => commentDelete(idx)}>x</button> */}
                   <button>o</button>
                 </div>
               ))}
