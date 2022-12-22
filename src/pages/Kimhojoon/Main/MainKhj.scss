@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+@mixin mainFlex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin objectFit {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  background-color: #fafafa;
+}
+
+.Maincontainer {
+  margin-top: 120px;
+}
+
+.navbox {
+  border-bottom: 1px solid #bdbdbd;
+  background-color: #fff;
+  z-index: 10;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  .navigation {
+    @include mainFlex(space-between, center);
+    width: 1000px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .leftbox,
+  .centerbox,
+  .rightbox {
+    display: flex;
+    overflow: hidden;
+    height: 34%;
+  }
+
+  .leftbox {
+    justify-content: space-between;
+    width: 170px;
+  }
+
+  .rightbox {
+    justify-content: space-between;
+    width: 150px;
+  }
+
+  .centerbox {
+    width: 200px;
+    border: 1px solid #bbb;
+    border-radius: 6.5px;
+  }
+
+  .Mainwestagram {
+    margin: auto 0;
+    font-family: 'Lobster', cursive;
+    font-size: 1.5em;
+  }
+
+  .logo {
+    object-fit: cover;
+    border-right: 2px solid black;
+    padding-right: 18px;
+  }
+
+  .searchbar {
+    border: none;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+#Maincontainer {
+  @include mainFlex(space-between, _);
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.mainfeed {
+  margin-right: 40px;
+  border: 1px solid #bdbdbd;
+  min-width: 500px;
+  width: 500px;
+
+  .id {
+    @include mainFlex(_, center);
+    width: 100%;
+    height: 60px;
+    position: relative;
+  }
+
+  .profileimg1 {
+    //div//
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto 10px;
+  }
+
+  .realimg1 {
+    //진짜 이미지//
+    @include objectFit;
+  }
+
+  .point3 {
+    position: absolute;
+    right: 10px;
+  }
+
+  .feedimg1 {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .feedimg2 {
+    @include objectFit;
+  }
+
+  .iconbox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    @include mainFlex(_, center);
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+  }
+
+  .real {
+    @include objectFit;
+  }
+
+  .saveicon {
+    position: absolute;
+    right: 5px;
+  }
+
+  .iconleft {
+    @include mainFlex(space-between, _);
+
+    margin-left: 8px;
+    width: 115px;
+  }
+
+  .feedment {
+    @include mainFlex(_, center);
+
+    width: 100%;
+    height: 20px;
+    margin-bottom: 5px;
+  }
+
+  .commentimg {
+    overflow: hidden;
+    height: 100%;
+    width: 30px;
+    margin: auto 8px;
+  }
+
+  .profileimg2 {
+    @include objectFit;
+  }
+
+  .mentcontainer {
+    overflow: scroll;
+    height: 60px;
+  }
+
+  .ment1,
+  .ment2 {
+    margin-left: 8px;
+  }
+
+  .ment2 {
+    margin-bottom: 8px;
+  }
+
+  .comment {
+    position: relative;
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+  }
+
+  .commentinput {
+    width: 80%;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+  }
+
+  .commentbtn {
+    width: 20%;
+    position: absolute;
+    right: 0;
+    border: none;
+    color: skyblue;
+    font-size: 15px;
+    background-color: #0095f6;
+  }
+  button {
+    &:disabled {
+      background-color: #c4e1fb;
+    }
+  }
+}
+
+.rightfeed {
+  width: 680px;
+
+  .idtext {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .myprofile {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto 10px;
+  }
+
+  .myprofilereal {
+    @include objectFit;
+  }
+
+  .idname {
+    text-align: center;
+    margin: auto 30px;
+    font-size: 20px;
+  }
+
+  .story {
+    border: 1px solid #bbb;
+    margin-bottom: 15px;
+    overflow: scroll;
+    height: 170px;
+  }
+
+  .storytext {
+    font-size: 20px;
+    @include mainFlex(space-between, center);
+    height: 50px;
+    margin: auto 10px;
+  }
+  .storybox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .storyimg {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto 10px;
+    margin-right: 20px;
+  }
+
+  .storyreal {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .recommend {
+    border: 1px solid #bdbdbd;
+    margin-bottom: 15px;
+    overflow: scroll;
+    height: 150px;
+  }
+
+  .recommendtext {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 20px;
+    height: 50px;
+  }
+
+  .recommendlist {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+    position: relative;
+  }
+
+  .footer {
+    text-align: center;
+  }
+
+  .recommendid {
+    position: absolute;
+    left: 70px;
+  }
+
+  .follow {
+    position: absolute;
+    right: 30px;
+  }
+}
